@@ -105,6 +105,7 @@ async function initGallery() {
         </a>
         <div class="card-actions">
           <a class="chip primary" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver en 3D</a>
+          ${m.ortofoto ? `<a class="chip" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto y mediciones</a>` : ''}
           ${m.calidad ? `<a class="chip" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
           ${m.reporte ? `<a class="chip" href="${esc(m.reporte)}" target="_blank" rel="noopener">Reporte PDF ↓</a>` : ''}
         </div>
@@ -149,12 +150,13 @@ async function initViewer() {
     ['Etiquetas', (m.etiquetas || []).join(', ')],
   ].filter(([, v]) => v);
   document.getElementById('p-meta').innerHTML = meta.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
-  if (m.calidad || m.reporte) {
+  if (m.calidad || m.reporte || m.ortofoto) {
     const q = document.getElementById('p-calidad');
     const kp = (m.calidad?.indicadores || []).slice(0, 4);
     q.innerHTML = `
       ${kp.length ? `<div class="p-kpis">${kp.map((k) => `<div><b>${esc(k.valor)}</b><span>${esc(k.label)}</span></div>`).join('')}</div>` : ''}
       ${m.calidad ? `<a class="btn" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
+      ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto</a>` : ''}
       ${m.reporte ? `<a class="btn ghost" href="${esc(m.reporte)}" target="_blank" rel="noopener">PDF</a>` : ''}`;
     q.hidden = false;
   }
@@ -245,6 +247,7 @@ async function initCalidad() {
       </div>
       <div class="q-actions">
         <a class="btn" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver modelo 3D</a>
+        ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto y mediciones</a>` : ''}
         ${m.reporte ? `<a class="btn ghost" href="${esc(m.reporte)}" target="_blank" rel="noopener">Reporte completo (PDF)</a>` : ''}
       </div>
     </div>
@@ -272,5 +275,32 @@ async function initCalidad() {
           <figure class="q-fig"><img src="${esc(c.imagen_superposicion)}" alt="Mapa de cantidad de fotos que ven cada punto del terreno">
           <figcaption>Cantidad de fotos que ven cada zona. Verde oscuro: 5 o más; rojo: solo 2.</figcaption></figure>` : ''}
       </aside>
-    </div>`;
+    </div>
+    <section class="q-gcp" id="q-gcp" hidden></section>`;
+  if (m.gcp?.geojson) {
+    const gj = await fetch(m.gcp.geojson).then((r) => r.json()).catch(() => null);
+    if (gj) {
+      const nf = (v, d = 2) => { const r = Number(Number(v).toFixed(d)); return (Object.is(r, -0) ? 0 : r).toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d }); };
+      const sec = document.getElementById('q-gcp');
+      sec.innerHTML = `
+        <div class="q-gcp-head">
+          <div><h2>Puntos de control terrestre</h2>
+          <p class="q-lead">${gj.features.length} puntos medidos en campo y usados para georreferenciar el modelo. Coordenadas en UTM zona 20 Sur (EPSG:32720). El residuo es la diferencia entre la posición medida y la que resultó en el modelo.</p></div>
+          <div class="q-actions">
+            ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${encodeURIComponent(m.id)}">Ver en el mapa</a>` : ''}
+            ${m.gcp.csv ? `<a class="chip" href="${esc(m.gcp.csv)}" download>CSV</a>` : ''}
+            ${m.gcp.geojson ? `<a class="chip" href="${esc(m.gcp.geojson)}" download>GeoJSON</a>` : ''}
+            ${m.gcp.kml ? `<a class="chip" href="${esc(m.gcp.kml)}" download>KML</a>` : ''}
+          </div>
+        </div>
+        <div class="q-tbl-wrap"><table class="q-tbl">
+          <thead><tr><th>ID</th><th>Este (m)</th><th>Norte (m)</th><th>Cota (m)</th><th>Res. X</th><th>Res. Y</th><th>Res. Z</th><th>Fotos</th></tr></thead>
+          <tbody>${gj.features.map((f) => { const p = f.properties; const bad = Math.abs(p.error_z_m) >= 0.07;
+            return `<tr><td><b>${esc(p.id)}</b></td><td>${nf(p.este_utm20s, 3)}</td><td>${nf(p.norte_utm20s, 3)}</td><td>${nf(p.cota_m, 3)}</td>
+              <td>${nf(p.error_x_m * 100, 1)} cm</td><td>${nf(p.error_y_m * 100, 1)} cm</td><td class="${bad ? 'warn' : ''}">${nf(p.error_z_m * 100, 1)} cm</td><td>${p.fotos}</td></tr>`; }).join('')}</tbody>
+        </table></div>
+        <p class="q-note">Resaltados: residuos verticales de 7 cm o más.</p>`;
+      sec.hidden = false;
+    }
+  }
 }

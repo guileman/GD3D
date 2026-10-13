@@ -45,6 +45,21 @@ models/<id>/          Un modelo por carpeta (modelo.glb + portada.jpg)
 
 Si el modelo tiene reporte, agregá `"reporte": "models/mi-modelo/reporte.pdf"` y un bloque `"calidad"` con `veredicto`, `resumen`, `datos`, `indicadores` y `conclusiones` (ver el frigorífico en `models.json` como ejemplo). Se genera automáticamente la página `calidad.html?m=<id>`, con enlaces desde el visor y una etiqueta en la galería.
 
+### Ortofoto y puntos de control (opcional)
+
+```json
+"ortofoto": {
+  "teselas": "models/mi-modelo/ortofoto/{z}/{x}/{y}.webp",
+  "meta": "models/mi-modelo/ortofoto/meta.json",
+  "descarga": "models/mi-modelo/ortofoto.tif"
+},
+"gcp": { "geojson": "...", "csv": "...", "kml": "..." }
+```
+
+Se abre en `mapa.html?m=<id>`, con herramientas para medir distancia (con azimut), superficie (con perímetro), ángulo y coordenadas de un punto. Las mediciones se calculan en una proyección transversa local centrada en el sitio, así que coinciden con el cálculo geodésico sobre WGS84 con diferencias de milímetros. Los GCP se muestran como capa, con ficha y tabla.
+
+Las teselas se generan desde la GeoTIFF con `tools/teselar_ortofoto.py` (Python + rasterio): `python3 tools/teselar_ortofoto.py ortofoto.tif models/mi-modelo/ortofoto 14 22`. Corta niveles de zoom de 14 a 22 en WebP y descarta las teselas vacías.
+
 Los textos de la portada (título, bienvenida, autor) se editan en el bloque `"sitio"` del mismo `models.json`.
 
 ## Optimizar modelos pesados

@@ -1,0 +1,117 @@
+/* ---------- Visor de ortofoto ---------- */
+body.map-page { height: 100dvh; overflow: hidden; }
+.map { position: fixed; inset: 0; background: #0b0c0e; }
+
+.small { font-size: 13px; }
+.muted { color: var(--muted); }
+
+/* Herramientas */
+.tools {
+  position: fixed; z-index: 6; left: 16px; top: 74px;
+  display: flex; flex-direction: column; gap: 6px;
+  background: rgba(22,24,27,.92); border: 1px solid var(--line); border-radius: 14px; padding: 6px;
+  backdrop-filter: blur(6px);
+}
+.tool {
+  display: flex; align-items: center; gap: 10px;
+  background: transparent; border: 0; color: var(--text); cursor: pointer;
+  padding: 9px 12px 9px 10px; border-radius: 9px; font: inherit; font-size: 14px; text-align: left;
+}
+.tool svg { width: 20px; height: 20px; flex: none; }
+.tool:hover { background: rgba(255,255,255,.06); }
+.tool.on { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.tool[data-action="borrar"] { color: var(--muted); border-top: 1px solid var(--line); border-radius: 0 0 9px 9px; margin-top: 2px; }
+.tool[data-action="borrar"]:hover { color: #ff6b81; }
+
+.tool-hint {
+  position: fixed; z-index: 6; left: 50%; top: 72px; transform: translateX(-50%);
+  background: rgba(20,20,22,.92); border: 1px solid var(--line); color: var(--text);
+  padding: 8px 14px; border-radius: 999px; font-size: 13px; max-width: calc(100vw - 32px);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Panel lateral */
+.side {
+  position: fixed; z-index: 6; right: 16px; top: 74px; bottom: 48px;
+  width: min(360px, calc(100vw - 32px)); overflow: auto;
+  background: rgba(22,24,27,.94); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 4px 18px 16px; backdrop-filter: blur(6px);
+}
+.side[hidden] { display: none; }
+.side section { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.side section:last-child { border-bottom: 0; }
+.side h2 { font-size: 15px; margin: 0 0 8px; letter-spacing: .01em; }
+.side p { margin: 0 0 8px; }
+
+.meas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.meas li { display: flex; align-items: center; gap: 6px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 8px 8px 12px; }
+.meas li > div { flex: 1; cursor: pointer; min-width: 0; }
+.meas-k { display: block; font-size: 12px; color: var(--muted); }
+.meas-v { display: block; font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+.mini { flex: none; width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; font-size: 15px; line-height: 1; }
+.mini:hover { color: var(--text); border-color: var(--muted); }
+
+.chk { display: flex; gap: 10px; align-items: center; font-size: 14px; padding: 4px 0; cursor: pointer; }
+.chk input { accent-color: var(--accent); width: 16px; height: 16px; }
+.range { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); margin-top: 8px; }
+.range input { accent-color: var(--accent); }
+
+.tbl-wrap { overflow-x: auto; margin: 4px 0 12px; }
+.gcp-tbl { width: 100%; border-collapse: collapse; font-size: 12px; font-family: var(--mono); }
+.gcp-tbl th { text-align: left; font-weight: 500; color: var(--muted); padding: 4px 6px; border-bottom: 1px solid var(--line); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+.gcp-tbl td { padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,.04); white-space: nowrap; }
+.gcp-tbl th { padding: 4px; }
+.gcp-tbl tbody tr { cursor: pointer; }
+.gcp-tbl tbody tr:hover { background: rgba(224,163,92,.1); }
+.gcp-tbl td.warn { color: var(--accent); }
+.dl { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Coordenadas */
+.coords {
+  position: fixed; z-index: 6; left: 16px; bottom: 14px;
+  display: flex; gap: 14px; flex-wrap: wrap;
+  background: rgba(20,20,22,.85); padding: 6px 12px; border-radius: 8px; font-size: 12px; color: var(--text);
+}
+.coords small { color: var(--muted); }
+
+/* Popup */
+.popup {
+  background: rgba(22,24,27,.97); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 16px 14px; min-width: 240px; color: var(--text); position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.popup:empty { display: none; }
+.popup h3 { margin: 2px 0 8px; font-size: 18px; }
+.popup dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; margin: 0; font-size: 13px; }
+.popup dt { color: var(--muted); }
+.popup dd { margin: 0; font-family: var(--mono); text-align: right; }
+.pop-x { position: absolute; top: 6px; right: 8px; background: none; border: 0; color: var(--muted); font-size: 20px; cursor: pointer; }
+
+/* Controles OpenLayers */
+.ol-zoom { top: auto; right: auto; left: 16px; bottom: 56px; }
+.ol-zoom button, .ol-attribution button { background: rgba(28,31,35,.9) !important; color: var(--text) !important; }
+.ol-scale-bar { left: auto; right: 16px; bottom: 16px; }
+.ol-scale-bar-inner { background: rgba(20,20,22,.8); padding: 4px 8px 2px; border-radius: 6px; }
+.ol-scale-text, .ol-scale-step-text { color: var(--text) !important; text-shadow: none !important; font-family: var(--mono); }
+.ol-attribution { right: auto; left: 50%; transform: translateX(-50%); bottom: 4px; }
+.ol-attribution ul { color: #333; }
+.ol-rotate { top: 74px; right: auto; left: 50%; display: none; }
+
+/* Panel abierto: corre zoom/escala */
+
+@media (max-width: 820px) {
+  .tools {
+    top: auto; bottom: 12px; left: 50%; transform: translateX(-50%);
+    flex-direction: row; gap: 2px; padding: 4px; max-width: calc(100vw - 16px);
+  }
+  .tool { flex-direction: column; gap: 3px; padding: 7px 8px; font-size: 10.5px; }
+  .tool svg { width: 19px; height: 19px; }
+  .tool[data-action="borrar"] { border-top: 0; border-left: 1px solid var(--line); border-radius: 0 9px 9px 0; margin: 0 0 0 2px; }
+  .side { top: 70px; bottom: 92px; right: 8px; width: calc(100vw - 16px); }
+  .coords { bottom: 86px; left: 8px; right: 8px; font-size: 11px; gap: 2px 10px; justify-content: center; }
+  .ol-zoom { bottom: 142px; left: auto; right: 10px; }
+  .ol-scale-bar { bottom: 142px; left: 8px; right: auto; }
+  .ol-attribution { bottom: 70px; }
+  .tool-hint { top: 66px; font-size: 12px; white-space: normal; text-align: center; border-radius: 12px; }
+  .topbar h1 { font-size: 15px; }
+}

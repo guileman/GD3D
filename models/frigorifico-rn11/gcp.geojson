@@ -1,0 +1,270 @@
+{
+ "type": "FeatureCollection",
+ "name": "GCP Frigorífico RN11",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75689735,
+     -32.71406823,
+     23.985
+    ]
+   },
+   "properties": {
+    "id": "GCP2",
+    "lat": -32.71406823,
+    "lon": -60.75689735,
+    "este_utm20s": 710237.08,
+    "norte_utm20s": 6378185.937,
+    "cota_m": 23.985,
+    "error_x_m": -0.0023,
+    "error_y_m": 0.0,
+    "error_z_m": 0.0011,
+    "error_3d_m": 0.0025,
+    "fotos": 6,
+    "fotos_ids": [
+     "V2_114.JPG",
+     "V2_115.JPG",
+     "V2_116.JPG",
+     "V3_167.JPG",
+     "V3_202.JPG",
+     "V3_204.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75687707,
+     -32.71376412,
+     24.144
+    ]
+   },
+   "properties": {
+    "id": "GCP4",
+    "lat": -32.71376412,
+    "lon": -60.75687707,
+    "este_utm20s": 710239.695,
+    "norte_utm20s": 6378219.619,
+    "cota_m": 24.144,
+    "error_x_m": 0.001,
+    "error_y_m": 0.0006,
+    "error_z_m": -0.0148,
+    "error_3d_m": 0.0149,
+    "fotos": 8,
+    "fotos_ids": [
+     "V2_121.JPG",
+     "V2_153.JPG",
+     "V2_154.JPG",
+     "V2_155.JPG",
+     "V3_228.JPG",
+     "V3_229.JPG",
+     "V3_230.JPG",
+     "V3_227.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75763156,
+     -32.7131191,
+     24.876
+    ]
+   },
+   "properties": {
+    "id": "GCP5",
+    "lat": -32.7131191,
+    "lon": -60.75763156,
+    "este_utm20s": 710170.478,
+    "norte_utm20s": 6378292.643,
+    "cota_m": 24.876,
+    "error_x_m": 0.0015,
+    "error_y_m": 0.0039,
+    "error_z_m": -0.0367,
+    "error_3d_m": 0.037,
+    "fotos": 5,
+    "fotos_ids": [
+     "V3_162.JPG",
+     "V3_163.JPG",
+     "V2_219.JPG",
+     "V2_220.JPG",
+     "V2_221.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75840495,
+     -32.71307069,
+     24.752
+    ]
+   },
+   "properties": {
+    "id": "GCP7",
+    "lat": -32.71307069,
+    "lon": -60.75840495,
+    "este_utm20s": 710098.088,
+    "norte_utm20s": 6378299.545,
+    "cota_m": 24.752,
+    "error_x_m": -0.0003,
+    "error_y_m": -0.0054,
+    "error_z_m": 0.0151,
+    "error_3d_m": 0.016,
+    "fotos": 4,
+    "fotos_ids": [
+     "V2_237.JPG",
+     "V2_238.JPG",
+     "V3_093.JPG",
+     "V3_096.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75739619,
+     -32.71336127,
+     30.561
+    ]
+   },
+   "properties": {
+    "id": "GCP10",
+    "lat": -32.71336127,
+    "lon": -60.75739619,
+    "este_utm20s": 710191.975,
+    "norte_utm20s": 6378265.321,
+    "cota_m": 30.561,
+    "error_x_m": -0.0008,
+    "error_y_m": -0.0003,
+    "error_z_m": 0.0777,
+    "error_3d_m": 0.0777,
+    "fotos": 7,
+    "fotos_ids": [
+     "V2_191.JPG",
+     "V2_190.JPG",
+     "V2_197.JPG",
+     "V2_198.JPG",
+     "V3_212.JPG",
+     "V3_213.JPG",
+     "V3_211.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75759004,
+     -32.7135949,
+     29.123
+    ]
+   },
+   "properties": {
+    "id": "GCP12",
+    "lat": -32.7135949,
+    "lon": -60.75759004,
+    "este_utm20s": 710173.254,
+    "norte_utm20s": 6378239.799,
+    "cota_m": 29.123,
+    "error_x_m": -0.0046,
+    "error_y_m": 0.0016,
+    "error_z_m": -0.1229,
+    "error_3d_m": 0.123,
+    "fotos": 8,
+    "fotos_ids": [
+     "V2_164.JPG",
+     "V2_163.JPG",
+     "V2_186.JPG",
+     "V3_145.JPG",
+     "V3_146.JPG",
+     "V3_147.JPG",
+     "V3_168.JPG",
+     "V3_166.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75802704,
+     -32.71455544,
+     23.791
+    ]
+   },
+   "properties": {
+    "id": "GCP14",
+    "lat": -32.71455544,
+    "lon": -60.75802704,
+    "este_utm20s": 710130.033,
+    "norte_utm20s": 6378134.151,
+    "cota_m": 23.791,
+    "error_x_m": 0.0,
+    "error_y_m": -0.0004,
+    "error_z_m": -0.0004,
+    "error_3d_m": 0.0005,
+    "fotos": 7,
+    "fotos_ids": [
+     "V2_103.JPG",
+     "V2_104.JPG",
+     "V2_105.JPG",
+     "V2_133.JPG",
+     "V3_035.JPG",
+     "V3_033.JPG",
+     "V3_034.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.75760953,
+     -32.71374248,
+     24.318
+    ]
+   },
+   "properties": {
+    "id": "GCP15",
+    "lat": -32.71374248,
+    "lon": -60.75760953,
+    "este_utm20s": 710171.081,
+    "norte_utm20s": 6378223.473,
+    "cota_m": 24.318,
+    "error_x_m": -0.003,
+    "error_y_m": -0.0015,
+    "error_z_m": 0.0522,
+    "error_3d_m": 0.0523,
+    "fotos": 11,
+    "fotos_ids": [
+     "V2_163.JPG",
+     "V2_164.JPG",
+     "V2_165.JPG",
+     "V2_187.JPG",
+     "V2_188.JPG",
+     "V2_186.JPG",
+     "V3_144.JPG",
+     "V3_145.JPG",
+     "V3_146.JPG",
+     "V3_147.JPG",
+     "V3_168.JPG"
+    ]
+   }
+  }
+ ]
+}

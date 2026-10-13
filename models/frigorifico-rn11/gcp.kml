@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>GCP Frigorífico RN11</name>
+<Placemark><name>GCP2</name><description>Cota 23.985 m · E 710237.08 N 6378185.937 (UTM 20S) · Error Z 0.0011 m</description><Point><coordinates>-60.75689735,-32.71406823,23.985</coordinates></Point></Placemark>
+<Placemark><name>GCP4</name><description>Cota 24.144 m · E 710239.695 N 6378219.619 (UTM 20S) · Error Z -0.0148 m</description><Point><coordinates>-60.75687707,-32.71376412,24.144</coordinates></Point></Placemark>
+<Placemark><name>GCP5</name><description>Cota 24.876 m · E 710170.478 N 6378292.643 (UTM 20S) · Error Z -0.0367 m</description><Point><coordinates>-60.75763156,-32.7131191,24.876</coordinates></Point></Placemark>
+<Placemark><name>GCP7</name><description>Cota 24.752 m · E 710098.088 N 6378299.545 (UTM 20S) · Error Z 0.0151 m</description><Point><coordinates>-60.75840495,-32.71307069,24.752</coordinates></Point></Placemark>
+<Placemark><name>GCP10</name><description>Cota 30.561 m · E 710191.975 N 6378265.321 (UTM 20S) · Error Z 0.0777 m</description><Point><coordinates>-60.75739619,-32.71336127,30.561</coordinates></Point></Placemark>
+<Placemark><name>GCP12</name><description>Cota 29.123 m · E 710173.254 N 6378239.799 (UTM 20S) · Error Z -0.1229 m</description><Point><coordinates>-60.75759004,-32.7135949,29.123</coordinates></Point></Placemark>
+<Placemark><name>GCP14</name><description>Cota 23.791 m · E 710130.033 N 6378134.151 (UTM 20S) · Error Z -0.0004 m</description><Point><coordinates>-60.75802704,-32.71455544,23.791</coordinates></Point></Placemark>
+<Placemark><name>GCP15</name><description>Cota 24.318 m · E 710171.081 N 6378223.473 (UTM 20S) · Error Z 0.0522 m</description><Point><coordinates>-60.75760953,-32.71374248,24.318</coordinates></Point></Placemark>
+</Document></kml>
