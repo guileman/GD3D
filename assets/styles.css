@@ -353,3 +353,9 @@ body.viewer-page { height: 100dvh; overflow: hidden; }
   .eq-card.wide { flex-direction: column; }
   .eq-card.wide .eq-photos.n2 .eq-ph { min-height: 0; aspect-ratio: 4 / 3; }
 }
+
+.eq-badge {
+  display: inline-block; vertical-align: middle; margin-left: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 3px 9px;
+}

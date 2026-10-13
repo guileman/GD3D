@@ -176,8 +176,16 @@
     {
       "nombre": "Cuadricóptero X650 · Rover 1",
       "tipo": "Drone de desarrollo propio",
-      "descripcion": "Cuadricóptero de armado propio sobre chasis X650 de fibra de carbono, diseñado para relevamientos técnicos con precisión centimétrica. Lleva GNSS RTK a bordo y una cámara Canon para fotogrametría.",
+      "descripcion": "Cuadricóptero de armado propio sobre chasis X650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control, y una cámara Canon para fotogrametría.",
       "datos": [
+        [
+          "Posicionamiento",
+          "GPS RTK a bordo (simpleRTK2B)"
+        ],
+        [
+          "Corrección",
+          "Base RTK propia"
+        ],
         [
           "Piloto automático",
           "ArduPilot"
@@ -185,14 +193,6 @@
         [
           "Controladora",
           "CUAV Nano V5"
-        ],
-        [
-          "GNSS",
-          "RTK con simpleRTK2B"
-        ],
-        [
-          "Corrección",
-          "Base RTK propia"
         ],
         [
           "Cámara",
@@ -208,7 +208,8 @@
           "src": "assets/equipos/cuadricoptero-estuche.jpg",
           "alt": "Cuadricóptero X650 sobre su estuche con la cámara Canon"
         }
-      ]
+      ],
+      "estado": "En desarrollo"
     },
     {
       "nombre": "Emlid Reach RS2",

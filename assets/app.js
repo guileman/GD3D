@@ -318,7 +318,7 @@ function renderEquipos(equipos) {
       </div>
       <div class="eq-body">
         ${e.tipo ? `<div class="eyebrow">${esc(e.tipo)}</div>` : ''}
-        <h3>${esc(e.nombre)}</h3>
+        <h3>${esc(e.nombre)}${e.estado ? ` <span class="eq-badge">${esc(e.estado)}</span>` : ''}</h3>
         ${e.descripcion ? `<p>${esc(e.descripcion)}</p>` : ''}
         ${e.datos?.length ? `<dl>${e.datos.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : ''}
       </div>
