@@ -51,6 +51,7 @@ async function initGallery() {
     return;
   }
   applySite(data.sitio);
+  renderEquipos(data.equipos);
   const modelos = data.modelos;
 
   // Stats
@@ -303,4 +304,43 @@ async function initCalidad() {
       sec.hidden = false;
     }
   }
+}
+
+/* ---------------- Equipos ---------------- */
+function renderEquipos(equipos) {
+  const sec = document.getElementById('equipos');
+  if (!sec || !equipos?.length) return;
+  const grid = document.getElementById('eq-grid');
+  grid.innerHTML = equipos.map((e, i) => `
+    <article class="eq-card${i === 0 || (e.fotos || []).length > 1 ? ' wide' : ''}">
+      <div class="eq-photos n${Math.min((e.fotos || []).length, 2)}">
+        ${(e.fotos || []).map((f) => `<button class="eq-ph" data-src="${esc(f.src)}" data-alt="${esc(f.alt || '')}"><img src="${esc(f.src)}" alt="${esc(f.alt || e.nombre)}" loading="lazy"></button>`).join('')}
+      </div>
+      <div class="eq-body">
+        ${e.tipo ? `<div class="eyebrow">${esc(e.tipo)}</div>` : ''}
+        <h3>${esc(e.nombre)}</h3>
+        ${e.descripcion ? `<p>${esc(e.descripcion)}</p>` : ''}
+        ${e.datos?.length ? `<dl>${e.datos.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : ''}
+      </div>
+    </article>`).join('');
+  sec.hidden = false;
+
+  // Ver foto ampliada
+  let lb = document.getElementById('lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'lightbox'; lb.className = 'lightbox'; lb.hidden = true;
+    lb.innerHTML = '<button class="icon-btn lb-x" aria-label="Cerrar">×</button><img alt=""><p></p>';
+    document.body.appendChild(lb);
+    lb.onclick = (ev) => { if (ev.target !== lb.querySelector('img')) lb.hidden = true; };
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') lb.hidden = true; });
+  }
+  grid.querySelectorAll('.eq-ph').forEach((b) => {
+    b.onclick = () => {
+      lb.querySelector('img').src = b.dataset.src;
+      lb.querySelector('img').alt = b.dataset.alt;
+      lb.querySelector('p').textContent = b.dataset.alt;
+      lb.hidden = false;
+    };
+  });
 }

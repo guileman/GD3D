@@ -142,5 +142,64 @@
         "kml": "models/frigorifico-rn11/gcp.kml"
       }
     }
+  ],
+  "equipos": [
+    {
+      "nombre": "DJI Phantom 4",
+      "tipo": "Drone",
+      "descripcion": "Drone usado en el relevamiento del frigorífico. Vuela misiones automáticas de fotogrametría.",
+      "datos": [
+        [
+          "Cámara",
+          "FC6310 · 20 MP (4864 × 3648 px)"
+        ]
+      ],
+      "fotos": [
+        {
+          "src": "assets/equipos/phantom4.jpg",
+          "alt": "Drone DJI Phantom 4 con control remoto, baterías y jalón"
+        }
+      ]
+    },
+    {
+      "nombre": "Cuadricóptero con cámara Canon",
+      "tipo": "Drone",
+      "descripcion": "Cuadricóptero de brazos de fibra de carbono con cámara Canon montada.",
+      "datos": [],
+      "fotos": [
+        {
+          "src": "assets/equipos/cuadricoptero-vuelo.jpg",
+          "alt": "Cuadricóptero en vuelo sobre un campo"
+        },
+        {
+          "src": "assets/equipos/cuadricoptero-estuche.jpg",
+          "alt": "Cuadricóptero sobre su estuche con cámara Canon"
+        }
+      ]
+    },
+    {
+      "nombre": "Receptor GNSS",
+      "tipo": "Topografía",
+      "descripcion": "Receptor GNSS para medir los puntos de control terrestre.",
+      "datos": [],
+      "fotos": [
+        {
+          "src": "assets/equipos/gnss-campo.jpg",
+          "alt": "Receptor GNSS sobre trípode en el predio del frigorífico"
+        }
+      ]
+    },
+    {
+      "nombre": "Puesto de trabajo",
+      "tipo": "Procesamiento",
+      "descripcion": "Puesto de trabajo para planificar vuelos y procesar los datos.",
+      "datos": [],
+      "fotos": [
+        {
+          "src": "assets/equipos/puesto-trabajo.jpg",
+          "alt": "Notebook, control remoto, receptor GNSS y drone sobre la mesa de trabajo"
+        }
+      ]
+    }
   ]
 }
