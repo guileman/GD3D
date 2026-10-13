@@ -145,7 +145,7 @@
     {
       "id": "escombros-loma-verde",
       "titulo": "Escombros — Loma Verde",
-      "descripcion": "Relevamiento fotogramétrico de un sector con acopio de escombros en Loma Verde, con 46 fotos de una cámara Sony α6000. Modelo 3D texturizado georreferenciado con puntos de control.",
+      "descripcion": "Relevamiento fotogramétrico de un sector con acopio de escombros en Loma Verde, con 46 fotos de una cámara Sony α6000. Modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.",
       "archivo": "models/escombros-loma-verde/modelo.glb",
       "portada": "models/escombros-loma-verde/portada.jpg",
       "fecha": "2023-10-08",
@@ -186,6 +186,10 @@
           [
             "Cotas del modelo",
             "52,3 a 63,9 m (incluye árboles)"
+          ],
+          [
+            "Ortofoto",
+            "1 cm/px · 125,7 × 118,7 m (UTM 20S)"
           ]
         ],
         "indicadores": [
@@ -242,9 +246,14 @@
             "texto": "Los residuos son de 1,1 a 1,2 cm en planta en columna, 0,4 cm en hormigón y 2,3 a 2,4 cm en altura en ambos. La precisión absoluta informada es de 1,6 cm en planta (CE90) y 2,4 cm en altura (LE90)."
           },
           {
+            "tipo": "ok",
+            "titulo": "Verificado con puntos de chequeo",
+            "texto": "Los puntos 2cuadrado y ruta, que no se usaron en el ajuste, caen a pocos centímetros de su posición medida sobre la ortofoto; via2 y via3 quedan a unos 20 a 25 cm del riel. Es una verificación visual, coherente con la precisión relativa del reporte."
+          },
+          {
             "tipo": "atencion",
             "titulo": "Solo dos puntos de control",
-            "texto": "Se usaron hormigón y columna; via3 quedó fuera del ajuste y los demás tenían una sola marca. Con dos puntos la escala queda fijada, pero el giro alrededor de la línea que los une depende del GPS de las fotos, y no hay puntos de chequeo para verificar la precisión real."
+            "texto": "Se usaron hormigón y columna; via3 quedó fuera del ajuste y los demás tenían una sola marca. Con dos puntos la escala queda fijada, pero el giro alrededor de la línea que los une depende del GPS de las fotos."
           },
           {
             "tipo": "atencion",
@@ -264,7 +273,7 @@
           {
             "tipo": "info",
             "titulo": "Recomendación",
-            "texto": "Para el próximo procesamiento conviene marcar cada punto de control en 3 o más fotos, así entran los 10 puntos medidos, y dejar 2 o 3 como puntos de chequeo para validar la precisión."
+            "texto": "Para el próximo procesamiento conviene marcar cada punto de control en 3 o más fotos, así entran los 10 puntos medidos, y dejar 2 o 3 como puntos de chequeo formales."
           }
         ],
         "imagen_superposicion": "models/escombros-loma-verde/superposicion.png"
@@ -273,6 +282,11 @@
         "geojson": "models/escombros-loma-verde/gcp.geojson",
         "csv": "models/escombros-loma-verde/gcp.csv",
         "kml": "models/escombros-loma-verde/gcp.kml"
+      },
+      "ortofoto": {
+        "teselas": "models/escombros-loma-verde/ortofoto/{z}/{x}/{y}.webp",
+        "meta": "models/escombros-loma-verde/ortofoto/meta.json",
+        "descarga": "models/escombros-loma-verde/ortofoto-escombros-loma-verde.tif"
       }
     }
   ],
