@@ -65,6 +65,8 @@ async function initGallery() {
   const heroOpen = document.getElementById('hero-open');
   if (ultimo) {
     const hm = document.getElementById('hero-model');
+    if (ultimo.orientacion) hm.orientation = ultimo.orientacion;
+    if (ultimo.camara) hm.cameraOrbit = ultimo.camara;
     hm.src = ultimo.archivo;
     if (ultimo.portada) hm.poster = ultimo.portada;
     document.getElementById('hero-tag').textContent = ultimo.titulo;
@@ -137,6 +139,7 @@ async function initViewer() {
   document.getElementById('p-meta').innerHTML = meta.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
 
   if (m.portada) mv.poster = m.portada;
+  if (m.orientacion) mv.orientation = m.orientacion; // opcional, ej. "0deg -90deg 0deg" para modelos Z-arriba
   if (m.camara) mv.cameraOrbit = m.camara;   // opcional, ej. "45deg 70deg 30m"
   mv.alt = m.titulo;
   mv.src = m.archivo;

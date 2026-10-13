@@ -8,16 +8,22 @@
   },
   "modelos": [
     {
-      "id": "edificio-ejemplo",
-      "titulo": "Edificio de ejemplo",
-      "descripcion": "Modelo de prueba generado para verificar la galería. Reemplazalo por tu primer relevamiento real.",
-      "archivo": "models/edificio-ejemplo/modelo.glb",
-      "portada": "",
-      "fecha": "2026-10-12",
-      "ubicacion": "—",
+      "id": "frigorifico-rn11",
+      "titulo": "Frigorífico — Ruta Nacional 11",
+      "descripcion": "Relevamiento aéreo del frigorífico sobre Ruta Nacional 11, Juan de Garay. Modelo texturizado generado por fotogrametría a partir de vuelos con drone.",
+      "archivo": "models/frigorifico-rn11/modelo.glb",
+      "portada": "models/frigorifico-rn11/portada.jpg",
+      "fecha": "2026-09-10",
+      "ubicacion": "Ruta Nacional 11 · Juan de Garay",
       "fotos": null,
-      "software": "",
-      "etiquetas": ["ejemplo", "edificio"]
+      "software": "WebODM",
+      "etiquetas": [
+        "frigorífico",
+        "drone",
+        "edificio"
+      ],
+      "orientacion": "0deg -90deg 0deg",
+      "camara": "20deg 55deg 75%"
     }
   ]
 }

@@ -34,11 +34,12 @@ models/<id>/          Un modelo por carpeta (modelo.glb + portada.jpg)
   "fotos": 320,
   "software": "Metashape 2.1",
   "etiquetas": ["edificio", "drone"],
-  "camara": "45deg 65deg auto"
+  "camara": "45deg 65deg auto",
+  "orientacion": "0deg -90deg 0deg"
 }
 ```
 
-`portada` y `camara` son opcionales. La **portada** se genera fácil: abrí el modelo en el visor, encuadralo como te guste y tocá el botón de la cámara 📷. Se descarga un JPG; guardalo en la carpeta del modelo como `portada.jpg`.
+`portada`, `camara` y `orientacion` son opcionales. Usá `"orientacion": "0deg -90deg 0deg"` para modelos exportados con Z hacia arriba (WebODM, Metashape): si no, se ven "acostados". En `camara`, el tercer valor puede ser `auto` o un porcentaje de la distancia por defecto (ej. `75%` para acercar). La **portada** se genera fácil: abrí el modelo en el visor, encuadralo como te guste y tocá el botón de la cámara 📷. Se descarga un JPG; guardalo en la carpeta del modelo como `portada.jpg`.
 
 Los textos de la portada (título, bienvenida, autor) se editan en el bloque `"sitio"` del mismo `models.json`.
 
