@@ -435,7 +435,6 @@ body.viewer-page { height: 100dvh; overflow: hidden; }
 .brand { white-space: nowrap; }
 .nav { white-space: nowrap; }
 @media (max-width: 520px) {
-  .brand > span:not(.brand-mark) { display: none; }
   .nav a { margin-left: 14px; font-size: 14px; }
 }
 
@@ -454,3 +453,11 @@ body.viewer-page { height: 100dvh; overflow: hidden; }
 
 /* Título de portada más largo */
 .hero h1 { font-size: clamp(36px, 5vw, 66px); line-height: 1.02; }
+
+/* ---------- Logotipo GD3D ---------- */
+.brand img { display: block; height: 34px; width: auto; }
+.brand-mini { display: none !important; }
+@media (max-width: 520px) {
+  .brand-logo { display: none !important; }
+  .brand-mini { display: block !important; }
+}
