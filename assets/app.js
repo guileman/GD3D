@@ -2,7 +2,7 @@
    Los datos salen de models/models.json: para publicar un modelo nuevo
    solo hay que agregar su entrada ahí (ver README). */
 
-const DATA_URL = 'models/models.json';
+const DATA_URL = 'models/models.json?v=' + Date.now();
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -71,6 +71,11 @@ async function initGallery() {
     if (ultimo.portada) hm.poster = ultimo.portada;
     document.getElementById('hero-tag').textContent = ultimo.titulo;
     heroOpen.href = 'viewer.html?m=' + encodeURIComponent(ultimo.id);
+    const heroRep = document.getElementById('hero-report');
+    if (heroRep && (ultimo.calidad || ultimo.reporte)) {
+      heroRep.href = ultimo.calidad ? 'calidad.html?m=' + encodeURIComponent(ultimo.id) : ultimo.reporte;
+      heroRep.hidden = false;
+    }
   } else {
     heroOpen.hidden = true;
   }
@@ -81,23 +86,29 @@ async function initGallery() {
       return;
     }
     grid.innerHTML = lista.map((m) => `
-      <a class="card" href="viewer.html?m=${encodeURIComponent(m.id)}">
-        <div class="thumb">
-          ${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy">` : PLACEHOLDER}
-          <span class="badge">3D</span>
-          ${m.calidad ? '<span class="badge q">Reporte de calidad</span>' : ''}
-        </div>
-        <div class="card-body">
-          <h3>${esc(m.titulo)}</h3>
-          ${m.descripcion ? `<p>${esc(m.descripcion)}</p>` : ''}
-          ${m.etiquetas?.length ? `<div class="tags">${m.etiquetas.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
-          <div class="meta">
-            ${m.ubicacion && m.ubicacion !== '—' ? `<span>${esc(m.ubicacion)}</span>` : ''}
-            ${m.fecha ? `<span>${esc(fmtFecha(m.fecha))}</span>` : ''}
-            ${m.fotos ? `<span>${esc(m.fotos)} fotos</span>` : ''}
+      <article class="card">
+        <a class="card-link" href="viewer.html?m=${encodeURIComponent(m.id)}">
+          <div class="thumb">
+            ${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy">` : PLACEHOLDER}
+            <span class="badge">3D</span>
           </div>
+          <div class="card-body">
+            <h3>${esc(m.titulo)}</h3>
+            ${m.descripcion ? `<p>${esc(m.descripcion)}</p>` : ''}
+            ${m.etiquetas?.length ? `<div class="tags">${m.etiquetas.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
+            <div class="meta">
+              ${m.ubicacion && m.ubicacion !== '—' ? `<span>${esc(m.ubicacion)}</span>` : ''}
+              ${m.fecha ? `<span>${esc(fmtFecha(m.fecha))}</span>` : ''}
+              ${m.fotos ? `<span>${esc(m.fotos)} fotos</span>` : ''}
+            </div>
+          </div>
+        </a>
+        <div class="card-actions">
+          <a class="chip primary" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver en 3D</a>
+          ${m.calidad ? `<a class="chip" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
+          ${m.reporte ? `<a class="chip" href="${esc(m.reporte)}" target="_blank" rel="noopener">Reporte PDF ↓</a>` : ''}
         </div>
-      </a>`).join('');
+      </article>`).join('');
   };
   render(modelos);
 

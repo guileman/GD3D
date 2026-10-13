@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/styles.css?v=3">
   <script>self.ModelViewerElement = { dracoDecoderLocation: new URL("assets/vendor/draco/", location.href).href };</script>
   <script type="module" src="assets/vendor/model-viewer.min.js"></script>
 </head>
@@ -36,6 +36,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             </a>
             <a class="btn ghost" id="hero-open" href="#">Abrir el último</a>
+            <a class="btn ghost" id="hero-report" href="#" hidden>Reporte de calidad</a>
           </div>
           <div class="stats">
             <div><b id="stat-count">–</b><span>Modelos</span></div>
@@ -82,7 +83,7 @@
     </div>
   </footer>
 
-  <script src="assets/app.js"></script>
+  <script src="assets/app.js?v=3"></script>
   <script>initGallery();</script>
 </body>
 </html>
