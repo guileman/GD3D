@@ -97,6 +97,7 @@ async function initGallery() {
           </div>
           <div class="card-body">
             <h3>${esc(m.titulo)}</h3>
+            ${m.resultado?.valores?.[0] ? `<div class="card-res"><b>${esc(m.resultado.valores[0].valor)}</b> ${esc(m.resultado.valores[0].label.toLowerCase())}</div>` : ''}
             ${m.descripcion ? `<p title="${esc(m.descripcion)}">${esc(m.descripcion)}</p>` : ''}
             ${m.etiquetas?.length ? `<div class="tags">${m.etiquetas.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
             <div class="meta">
@@ -422,6 +423,21 @@ async function initProyecto() {
       </div>
       ${m.portada ? `<a class="pj-cover" href="viewer.html?m=${enc}"><img src="${esc(m.portada)}" alt="Vista del modelo 3D de ${esc(m.titulo)}"></a>` : ''}
     </section>
+
+    ${m.resultado ? `<section class="pj-sec pj-res"><div class="eyebrow">Resultado</div><h2>${esc(m.resultado.titulo || 'Resultado')}</h2>
+      <div class="q-kpis">${(m.resultado.valores || []).map((k) => `<div class="q-kpi"><b>${esc(k.valor)}</b><span>${esc(k.label)}</span>${k.nota ? `<small>${esc(k.nota)}</small>` : ''}</div>`).join('')}</div>
+      <div class="pj-res-body">
+        <div>
+          ${m.resultado.texto ? `<p>${esc(m.resultado.texto)}</p>` : ''}
+          ${m.resultado.advertencias?.length ? `<ul class="pj-warn">${m.resultado.advertencias.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}
+          <div class="dl">
+            ${m.ortofoto ? `<a class="chip" href="mapa.html?m=${enc}">Ver el contorno en el mapa</a>` : ''}
+            ${m.resultado.geojson ? `<a class="chip" href="${esc(m.resultado.geojson)}" download>Contorno y volumen (GeoJSON)</a>` : ''}
+          </div>
+        </div>
+        ${m.resultado.imagen ? `<figure class="pj-res-fig"><img src="${esc(m.resultado.imagen)}" alt="${esc(m.resultado.imagen_alt || '')}" loading="lazy"><figcaption>${esc(m.resultado.imagen_alt || '')}</figcaption></figure>` : ''}
+      </div>
+    </section>` : ''}
 
     ${P.usos?.length ? `<section class="pj-sec"><div class="eyebrow">Para qué sirve</div><h2>Qué se puede hacer con este relevamiento</h2>
       <div class="pj-grid">${P.usos.map(card).join('')}</div></section>` : ''}

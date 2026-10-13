@@ -438,3 +438,16 @@ body.viewer-page { height: 100dvh; overflow: hidden; }
   .brand > span:not(.brand-mark) { display: none; }
   .nav a { margin-left: 14px; font-size: 14px; }
 }
+
+/* ---------- Resultado de cómputo ---------- */
+.pj-res .q-kpis { margin-bottom: 22px; }
+.pj-res-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; }
+.pj-res-body p { margin: 0 0 14px; color: var(--text); }
+.pj-warn { margin: 0 0 18px; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
+.pj-warn li { margin-bottom: 6px; }
+.pj-res-fig { margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-2); }
+.pj-res-fig img { width: 100%; }
+.pj-res-fig figcaption { font-size: 12.5px; color: var(--muted); padding: 8px 12px; }
+.card-res { font-size: 14px; color: var(--muted); }
+.card-res b { font-family: var(--mono); font-weight: 500; color: var(--accent); font-size: 16px; }
+@media (max-width: 820px) { .pj-res-body { grid-template-columns: 1fr; } }

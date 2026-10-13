@@ -142,6 +142,31 @@ async function initMapa() {
   });
   map.getView().fit(extent, { padding: [70, 40, 70, 40] });
 
+  // ---------- Contorno de cómputo (si existe) ----------
+  let resLayer = null;
+  if (m.resultado?.geojson) {
+    const rgj = await fetch(m.resultado.geojson).then((r) => r.json()).catch(() => null);
+    if (rgj) {
+      resLayer = new ol.layer.Vector({
+        zIndex: 4,
+        source: new ol.source.Vector({ features: new ol.format.GeoJSON().readFeatures(rgj, { featureProjection: 'EPSG:3857' }) }),
+        style: (f) => new ol.style.Style({
+          stroke: new ol.style.Stroke({ color: '#e0a35c', width: 2.5, lineDash: [8, 6] }),
+          fill: new ol.style.Fill({ color: 'rgba(224,163,92,.14)' }),
+          text: new ol.style.Text({
+            text: m.resultado.etiqueta_mapa || '', font: '700 15px Inter Tight, system-ui, sans-serif',
+            fill: new ol.style.Fill({ color: '#1a1206' }), backgroundFill: new ol.style.Fill({ color: '#e0a35c' }), padding: [4, 8, 4, 8],
+          }),
+        }),
+      });
+      map.addLayer(resLayer);
+      const lbl = document.createElement('label'); lbl.className = 'chk';
+      lbl.innerHTML = `<input type="checkbox" id="lyr-res" checked> ${esc(m.resultado.titulo || 'Cómputo')}`;
+      document.getElementById('lyr-gcp').closest('label').after(lbl);
+      lbl.querySelector('input').onchange = (e) => resLayer.setVisible(e.target.checked);
+    }
+  }
+
   // ---------- Panel, capas ----------
   const side = document.getElementById('side');
   const bSide = document.getElementById('btn-side');

@@ -210,7 +210,7 @@
     {
       "id": "escombros-loma-verde",
       "titulo": "Escombros — Loma Verde",
-      "descripcion": "Relevamiento fotogramétrico de un acopio de escombros orientado a determinar su volumen. El modelo digital de superficie permite cubicar el material por diferencia respecto de una superficie de base que represente el terreno natural. Productos: modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.",
+      "descripcion": "Relevamiento fotogramétrico de un acopio de escombros orientado a determinar su volumen. Sobre el modelo digital de superficie se cubicó el material por diferencia respecto de una superficie de base triangulada desde el contorno del acopio: 935,76 m³ en 941,47 m². Productos: modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.",
       "archivo": "models/escombros-loma-verde/modelo.glb",
       "portada": "models/escombros-loma-verde/portada.jpg",
       "fecha": "2023-10-08",
@@ -355,11 +355,11 @@
         "descarga": "models/escombros-loma-verde/ortofoto-escombros-loma-verde.tif"
       },
       "practico": {
-        "intro": "Saber cuánto material hay en un acopio para presupuestar su retiro y controlar lo que se mueve, sin estimaciones a ojo.",
+        "intro": "Cuánto material hay en el acopio —unos 936 m³— para presupuestar su retiro y controlar lo que se mueve, sin estimaciones a ojo.",
         "usos": [
           {
             "titulo": "Cuántos metros cúbicos hay",
-            "texto": "El modelo permite calcular el volumen del acopio y traducirlo en algo concreto: cantidad de camiones o volquetes y costo de retiro y disposición."
+            "texto": "El acopio tiene unos 936 m³ de material. Traducido a logística, son alrededor de 63 viajes de un camión volcador de 15 m³, o unos 188 volquetes de 5 m³."
           },
           {
             "titulo": "Controlar a un contratista",
@@ -407,6 +407,46 @@
           }
         ],
         "confiabilidad": "Las medidas tienen un margen de unos 15 cm en planta y 25 cm en altura: alcanza para estimar el volumen y planificar el retiro. Para un cómputo de mayor precisión se puede reprocesar con más puntos de control."
+      },
+      "resultado": {
+        "titulo": "Volumen del acopio",
+        "valores": [
+          {
+            "valor": "936 m³",
+            "label": "Volumen de escombros",
+            "nota": "935,76 m³ calculados"
+          },
+          {
+            "valor": "941 m²",
+            "label": "Superficie ocupada",
+            "nota": "perímetro 146,5 m"
+          },
+          {
+            "valor": "≈ 1,0 m",
+            "label": "Altura media",
+            "nota": "volumen / superficie"
+          },
+          {
+            "valor": "≈ 63",
+            "label": "Viajes de camión",
+            "nota": "volcador de 15 m³"
+          },
+          {
+            "valor": "≈ 188",
+            "label": "Volquetes",
+            "nota": "de 5 m³"
+          }
+        ],
+        "texto": "El volumen se calculó sobre el modelo digital de superficie, dentro del contorno del acopio, tomando como base una superficie triangulada a partir del borde, que representa el terreno alrededor del montículo. Como el material ya está suelto, el volumen medido corresponde aproximadamente al que hay que cargar.",
+        "advertencias": [
+          "El contorno incluye algo de vegetación en su extremo inferior, que suma al volumen: el valor real de escombros es algo menor.",
+          "Con la precisión del modelo (unos 20 cm en altura), una diferencia de 10 cm en la superficie de base equivale a unos 94 m³ (10 %). Conviene tomar el resultado como valor de referencia para presupuestar.",
+          "Los viajes de camión son orientativos: dependen de la capacidad real de cada equipo."
+        ],
+        "imagen": "models/escombros-loma-verde/volumen-webodm.jpg",
+        "imagen_alt": "Cálculo de volumen en WebODM sobre el modelo digital de superficie",
+        "geojson": "models/escombros-loma-verde/volumen.geojson",
+        "etiqueta_mapa": "936 m³"
       }
     }
   ],
