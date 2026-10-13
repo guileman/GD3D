@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>GCP Escombros Loma Verde</name>
+<Placemark><name>hormigon</name><description>Cota 55.689 m · E 709315.3 N 6342668.51 (UTM 20S)</description><Point><coordinates>-60.7586805,-33.03438577,55.689</coordinates></Point></Placemark>
+<Placemark><name>columna</name><description>Cota 54.057 m · E 709282.15 N 6342637.28 (UTM 20S)</description><Point><coordinates>-60.7590281,-33.03467363,54.057</coordinates></Point></Placemark>
+</Document></kml>

@@ -141,6 +141,139 @@
         "csv": "models/frigorifico-rn11/gcp.csv",
         "kml": "models/frigorifico-rn11/gcp.kml"
       }
+    },
+    {
+      "id": "escombros-loma-verde",
+      "titulo": "Escombros — Loma Verde",
+      "descripcion": "Relevamiento fotogramétrico de un sector con acopio de escombros en Loma Verde, con 46 fotos de una cámara Sony α6000. Modelo 3D texturizado georreferenciado con puntos de control.",
+      "archivo": "models/escombros-loma-verde/modelo.glb",
+      "portada": "models/escombros-loma-verde/portada.jpg",
+      "fecha": "2023-10-08",
+      "ubicacion": "Loma Verde",
+      "fotos": 46,
+      "software": "ODX 3.8.3",
+      "etiquetas": [
+        "escombros",
+        "Sony α6000"
+      ],
+      "orientacion": "0deg -90deg 0deg",
+      "camara": "25deg 55deg 80%",
+      "reporte": "models/escombros-loma-verde/reporte-calidad.pdf",
+      "calidad": {
+        "veredicto": "Escala y posición correctas al centímetro en los puntos de control; precisión interna del modelo del orden de 15 cm en planta y 25 cm en altura.",
+        "resumen": "Se reconstruyeron todas las fotos y el modelo quedó georreferenciado con dos puntos de control, con residuos de 1 a 2 cm. La geometría interna es menos precisa que la del frigorífico, en parte porque el control se apoya en solo dos puntos.",
+        "datos": [
+          [
+            "Fecha de captura",
+            "08/10/2023 (el reloj de la cámara marcaba 20/01/2016)"
+          ],
+          [
+            "Procesado",
+            "13/10/2026 · 12 min"
+          ],
+          [
+            "Superficie",
+            "0,44 ha (0,0044 km²)"
+          ],
+          [
+            "Cámara",
+            "Sony α6000 (ILCE-6000) · 6000 × 4000 px"
+          ],
+          [
+            "Georreferencia",
+            "GPS de las fotos + 2 puntos de control (hormigón y columna)"
+          ],
+          [
+            "Cotas del modelo",
+            "52,3 a 63,9 m (incluye árboles)"
+          ]
+        ],
+        "indicadores": [
+          {
+            "valor": "100 %",
+            "label": "Fotos reconstruidas",
+            "nota": "46 de 46"
+          },
+          {
+            "valor": "0,95 cm",
+            "label": "GSD promedio",
+            "nota": "tamaño de píxel en el terreno"
+          },
+          {
+            "valor": "1,6 cm",
+            "label": "Precisión horizontal",
+            "nota": "CE90 absoluta (2 GCP)"
+          },
+          {
+            "valor": "2,4 cm",
+            "label": "Precisión vertical",
+            "nota": "LE90 absoluta (2 GCP)"
+          },
+          {
+            "valor": "14,7 cm",
+            "label": "Precisión relativa",
+            "nota": "CE90 horizontal"
+          },
+          {
+            "valor": "1,91 px",
+            "label": "Error de reproyección",
+            "nota": "promedio"
+          },
+          {
+            "valor": "3,1 M",
+            "label": "Puntos densos",
+            "nota": "nube densa"
+          }
+        ],
+        "conclusiones": [
+          {
+            "tipo": "ok",
+            "titulo": "Reconstrucción completa",
+            "texto": "Se orientaron las 46 fotos (100 %) y el 98 % de los puntos de la nube dispersa. La nube densa tiene unos 3,1 millones de puntos."
+          },
+          {
+            "tipo": "ok",
+            "titulo": "Escala corregida",
+            "texto": "Un primer procesamiento con un solo punto de control había dejado el modelo unas 10 veces más chico. Con dos puntos válidos la escala es correcta: el área cubierta es de 0,44 ha y el GSD de 0,95 cm, coherente con un vuelo a unos 38 m de altura."
+          },
+          {
+            "tipo": "ok",
+            "titulo": "Buen ajuste en los puntos de control",
+            "texto": "Los residuos son de 1,1 a 1,2 cm en planta en columna, 0,4 cm en hormigón y 2,3 a 2,4 cm en altura en ambos. La precisión absoluta informada es de 1,6 cm en planta (CE90) y 2,4 cm en altura (LE90)."
+          },
+          {
+            "tipo": "atencion",
+            "titulo": "Solo dos puntos de control",
+            "texto": "Se usaron hormigón y columna; via3 quedó fuera del ajuste y los demás tenían una sola marca. Con dos puntos la escala queda fijada, pero el giro alrededor de la línea que los une depende del GPS de las fotos, y no hay puntos de chequeo para verificar la precisión real."
+          },
+          {
+            "tipo": "atencion",
+            "titulo": "Precisión interna moderada",
+            "texto": "El error de la nube 3D es de 14 cm RMS (Z 21 cm) y la precisión relativa es de 15 cm en planta y 23 cm en altura. Sirve para medir dimensiones y superficies del orden de metros, no para detalle centimétrico."
+          },
+          {
+            "tipo": "atencion",
+            "titulo": "Reproyección algo alta",
+            "texto": "El error de reproyección promedio es de 1,91 px, el doble que en el frigorífico. Es aceptable, pero indica un ajuste menos fino entre las fotos."
+          },
+          {
+            "tipo": "info",
+            "titulo": "La altura del GPS estaba corrida",
+            "texto": "Las posiciones GPS de las fotos tienen 20,6 m de error, casi todo en altura: la altitud registrada estaba unos 18 m por debajo de la real. En planta el error es de 5 a 9 m."
+          },
+          {
+            "tipo": "info",
+            "titulo": "Recomendación",
+            "texto": "Para el próximo procesamiento conviene marcar cada punto de control en 3 o más fotos, así entran los 10 puntos medidos, y dejar 2 o 3 como puntos de chequeo para validar la precisión."
+          }
+        ],
+        "imagen_superposicion": "models/escombros-loma-verde/superposicion.png"
+      },
+      "gcp": {
+        "geojson": "models/escombros-loma-verde/gcp.geojson",
+        "csv": "models/escombros-loma-verde/gcp.csv",
+        "kml": "models/escombros-loma-verde/gcp.kml"
+      }
     }
   ],
   "equipos": [

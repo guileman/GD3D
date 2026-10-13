@@ -1,0 +1,62 @@
+{
+ "type": "FeatureCollection",
+ "name": "GCP Escombros Loma Verde",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.7586805,
+     -33.03438577,
+     55.689
+    ]
+   },
+   "properties": {
+    "id": "hormigon",
+    "lat": -33.03438577,
+    "lon": -60.7586805,
+    "este_utm20s": 709315.3,
+    "norte_utm20s": 6342668.51,
+    "cota_m": 55.689,
+    "error_x_m": 0.0,
+    "error_y_m": 0.0042,
+    "error_z_m": 0.0231,
+    "error_3d_m": 0.0235,
+    "fotos": 2,
+    "fotos_ids": [
+     "DSC00349_geotag.JPG",
+     "DSC00348_geotag.JPG"
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -60.7590281,
+     -33.03467363,
+     54.057
+    ]
+   },
+   "properties": {
+    "id": "columna",
+    "lat": -33.03467363,
+    "lon": -60.7590281,
+    "este_utm20s": 709282.15,
+    "norte_utm20s": 6342637.28,
+    "cota_m": 54.057,
+    "error_x_m": -0.0105,
+    "error_y_m": -0.0117,
+    "error_z_m": -0.0236,
+    "error_3d_m": 0.0283,
+    "fotos": 2,
+    "fotos_ids": [
+     "DSC00362_geotag.JPG",
+     "DSC00357_geotag.JPG"
+    ]
+   }
+  }
+ ]
+}

@@ -135,7 +135,7 @@ async function initMapa() {
   const map = new ol.Map({
     target: 'map',
     layers: [sat, orto, gcpLayer, measLayer],
-    view: new ol.View({ center: ol.proj.fromLonLat(meta.center), zoom: 18, maxZoom: 24, constrainResolution: false }),
+    view: new ol.View({ center: ol.proj.fromLonLat(meta.center), zoom: 18, maxZoom: Math.max(24, meta.maxzoom + 3), constrainResolution: false }),
     controls: ol.control.defaults.defaults({ attributionOptions: { collapsible: true } }).extend([
       new ol.control.ScaleLine({ units: 'metric', bar: true, steps: 4, minWidth: 110 }),
     ]),
@@ -171,7 +171,7 @@ async function initMapa() {
     tbl.querySelectorAll('tr[data-id]').forEach((tr) => {
       tr.onclick = () => {
         const f = feats.find((x) => x.get('id') === tr.dataset.id);
-        map.getView().animate({ center: f.getGeometry().getCoordinates(), zoom: 22, duration: 500 });
+        map.getView().animate({ center: f.getGeometry().getCoordinates(), zoom: meta.maxzoom, duration: 500 });
         showGcpPopup(f);
       };
     });
