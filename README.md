@@ -1,4 +1,4 @@
-# Modelos 3D — galería de fotogrametría
+# GD3D — galería de relevamientos por fotogrametría
 
 Sitio estático para publicar modelos 3D hechos con fotogrametría. Tiene una portada de bienvenida, una galería con buscador y un visor 3D para cada modelo. No necesita compilar nada y funciona directo en **GitHub Pages**.
 
@@ -92,4 +92,4 @@ python3 -m http.server 8000
 
 1. Subí el contenido de esta carpeta a la raíz del repositorio.
 2. En el repo, andá a **Settings → Pages → Source: Deploy from a branch**, elegí `main` y la carpeta `/ (root)`.
-3. Unos minutos después la web queda en `https://guileman.github.io/<nombre-del-repo>/`.
+3. Unos minutos después la web queda en **https://guileman.github.io/GD3D/**.
