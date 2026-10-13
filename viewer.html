@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Visor 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module" src="assets/vendor/model-viewer.min.js"></script>
+</head>
+<body class="viewer-page">
+  <div class="progress" id="progress"></div>
+
+  <div class="viewer">
+    <model-viewer id="mv" camera-controls touch-action="none" shadow-intensity="1" exposure="1"
+      interaction-prompt="none" ar ar-modes="webxr scene-viewer quick-look"
+      min-camera-orbit="auto auto 0.5m" max-camera-orbit="auto 180deg auto"
+      interpolation-decay="120">
+      <button slot="ar-button" class="btn ar-btn">Ver en mi espacio (AR)</button>
+    </model-viewer>
+  </div>
+
+  <div class="loading" id="loading">Cargando modelo…</div>
+
+  <header class="topbar">
+    <a class="icon-btn" href="./#galeria" title="Volver a la galería" aria-label="Volver">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <h1 id="title">Modelo</h1>
+    <span class="spacer"></span>
+    <button class="icon-btn on" id="btn-info" title="Información" aria-label="Información">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>
+    </button>
+  </header>
+
+  <aside class="panel" id="panel">
+    <div class="eyebrow" id="p-ubicacion"></div>
+    <p id="p-desc"></p>
+    <dl id="p-meta"></dl>
+  </aside>
+
+  <div class="controls">
+    <button class="icon-btn" id="btn-rotate" title="Girar automáticamente" aria-label="Girar automáticamente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-reset" title="Volver a la vista inicial" aria-label="Vista inicial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4M17 12h4M12 3v4M12 17v4"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-shot" title="Descargar captura (sirve como portada)" aria-label="Descargar captura">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-full" title="Pantalla completa" aria-label="Pantalla completa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+    </button>
+  </div>
+
+  <div class="hint" id="hint">Arrastrá para girar · Rueda o pellizco para acercar · Dos dedos / clic derecho para desplazar</div>
+
+  <script src="assets/app.js"></script>
+  <script>initViewer();</script>
+</body>
+</html>

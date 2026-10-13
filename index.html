@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modelos 3D</title>
+  <meta name="description" content="Galería de modelos 3D creados por fotogrametría.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module" src="assets/vendor/model-viewer.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./"><span class="brand-mark"></span><span data-site="titulo">Modelos 3D</span></a>
+      <nav class="nav">
+        <a href="#galeria">Modelos</a>
+        <a href="#acerca">Acerca</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow" data-site="subtitulo">Relevamientos por fotogrametría</div>
+          <h1>Espacios reales,<br><em>en tres dimensiones.</em></h1>
+          <p class="lead" data-site="bienvenida"></p>
+          <div class="hero-actions">
+            <a class="btn" href="#galeria">Ver modelos
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <a class="btn ghost" id="hero-open" href="#">Abrir el último</a>
+          </div>
+          <div class="stats">
+            <div><b id="stat-count">–</b><span>Modelos</span></div>
+            <div><b id="stat-photos">–</b><span>Fotos procesadas</span></div>
+            <div><b id="stat-last">–</b><span>Última carga</span></div>
+          </div>
+        </div>
+        <div class="hero-viewer">
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+          <model-viewer id="hero-model" camera-controls auto-rotate rotation-per-second="18deg"
+            interaction-prompt="none" shadow-intensity="1" exposure="1" disable-zoom
+            alt="Vista previa del último modelo"></model-viewer>
+          <span class="tag" id="hero-tag"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Galería</div>
+            <h2>Modelos publicados</h2>
+          </div>
+          <input class="search" id="search" type="search" placeholder="Buscar por nombre, lugar o etiqueta…" aria-label="Buscar modelos">
+        </div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="acerca" style="padding-top:0">
+      <div class="wrap" style="max-width:760px">
+        <div class="eyebrow">Acerca</div>
+        <h2 style="font-size:28px;letter-spacing:-.02em;margin:6px 0 12px">Cómo se hacen estos modelos</h2>
+        <p style="color:var(--muted)">Cada modelo se reconstruye a partir de decenas o cientos de fotografías tomadas alrededor del objeto. El software de fotogrametría detecta puntos en común entre las fotos, calcula su posición en el espacio y genera una malla con textura real. Podés girarlos con el mouse o con el dedo, acercarte con la rueda o pellizcando, y en celulares compatibles verlos en realidad aumentada.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="year"></span> <span data-site="autor"></span></span>
+      <span class="mono" style="font-size:12px">Visor: model-viewer</span>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script>initGallery();</script>
+</body>
+</html>

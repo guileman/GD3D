@@ -1,0 +1,23 @@
+{
+  "sitio": {
+    "titulo": "Modelos 3D",
+    "subtitulo": "Relevamientos por fotogrametría",
+    "bienvenida": "Edificios y espacios reconstruidos a partir de fotografías. Elegí un modelo y recorrelo en 3D: girá, acercate y miralo desde cualquier ángulo.",
+    "autor": "guileman",
+    "contacto": ""
+  },
+  "modelos": [
+    {
+      "id": "edificio-ejemplo",
+      "titulo": "Edificio de ejemplo",
+      "descripcion": "Modelo de prueba generado para verificar la galería. Reemplazalo por tu primer relevamiento real.",
+      "archivo": "models/edificio-ejemplo/modelo.glb",
+      "portada": "",
+      "fecha": "2026-10-12",
+      "ubicacion": "—",
+      "fotos": null,
+      "software": "",
+      "etiquetas": ["ejemplo", "edificio"]
+    }
+  ]
+}
