@@ -145,59 +145,109 @@
   ],
   "equipos": [
     {
-      "nombre": "DJI Phantom 4",
+      "nombre": "DJI Phantom 4 Pro",
       "tipo": "Drone",
-      "descripcion": "Drone usado en el relevamiento del frigorífico. Vuela misiones automáticas de fotogrametría.",
+      "descripcion": "Drone comercial para misiones automáticas de fotogrametría. Con él se hizo el relevamiento del frigorífico sobre la Ruta Nacional 11.",
       "datos": [
         [
           "Cámara",
-          "FC6310 · 20 MP (4864 × 3648 px)"
+          "FC6310 · sensor CMOS de 1\", 20 MP"
+        ],
+        [
+          "Resolución",
+          "4864 × 3648 px (4:3)"
+        ],
+        [
+          "Obturador",
+          "Mecánico, sin distorsión por barrido"
+        ],
+        [
+          "Uso",
+          "Ortofotos y modelos 3D texturizados"
         ]
       ],
       "fotos": [
         {
           "src": "assets/equipos/phantom4.jpg",
-          "alt": "Drone DJI Phantom 4 con control remoto, baterías y jalón"
+          "alt": "DJI Phantom 4 Pro con control remoto, baterías y jalón"
         }
       ]
     },
     {
-      "nombre": "Cuadricóptero con cámara Canon",
-      "tipo": "Drone",
-      "descripcion": "Cuadricóptero de brazos de fibra de carbono con cámara Canon montada.",
-      "datos": [],
+      "nombre": "Cuadricóptero X650 · Rover 1",
+      "tipo": "Drone de desarrollo propio",
+      "descripcion": "Cuadricóptero de armado propio sobre chasis X650 de fibra de carbono, diseñado para relevamientos técnicos con precisión centimétrica. Lleva GNSS RTK a bordo y una cámara Canon para fotogrametría.",
+      "datos": [
+        [
+          "Piloto automático",
+          "ArduPilot"
+        ],
+        [
+          "Controladora",
+          "CUAV Nano V5"
+        ],
+        [
+          "GNSS",
+          "RTK con simpleRTK2B"
+        ],
+        [
+          "Corrección",
+          "Base RTK propia"
+        ],
+        [
+          "Cámara",
+          "Canon"
+        ]
+      ],
       "fotos": [
         {
           "src": "assets/equipos/cuadricoptero-vuelo.jpg",
-          "alt": "Cuadricóptero en vuelo sobre un campo"
+          "alt": "Cuadricóptero X650 (Rover 1) en vuelo"
         },
         {
           "src": "assets/equipos/cuadricoptero-estuche.jpg",
-          "alt": "Cuadricóptero sobre su estuche con cámara Canon"
+          "alt": "Cuadricóptero X650 sobre su estuche con la cámara Canon"
         }
       ]
     },
     {
-      "nombre": "Receptor GNSS",
-      "tipo": "Topografía",
-      "descripcion": "Receptor GNSS para medir los puntos de control terrestre.",
-      "datos": [],
+      "nombre": "Emlid Reach RS2",
+      "tipo": "Topografía · GNSS",
+      "descripcion": "Receptores GNSS multibanda que se usan como base y rover para medir los puntos de control terrestre y dar correcciones RTK.",
+      "datos": [
+        [
+          "Constelaciones",
+          "GPS, GLONASS, Galileo, BeiDou, QZSS"
+        ],
+        [
+          "Modos",
+          "RTK, PPK y estático"
+        ],
+        [
+          "Precisión RTK",
+          "H 7 mm + 1 ppm · V 14 mm + 1 ppm"
+        ],
+        [
+          "Precisión estática",
+          "H 4 mm + 0,5 ppm · V 8 mm + 1 ppm"
+        ]
+      ],
       "fotos": [
         {
           "src": "assets/equipos/gnss-campo.jpg",
-          "alt": "Receptor GNSS sobre trípode en el predio del frigorífico"
+          "alt": "Receptor Emlid Reach RS2 sobre trípode en el predio del frigorífico"
         }
       ]
     },
     {
       "nombre": "Puesto de trabajo",
       "tipo": "Procesamiento",
-      "descripcion": "Puesto de trabajo para planificar vuelos y procesar los datos.",
+      "descripcion": "Planificación de vuelos, configuración del Rover 1 y procesamiento fotogramétrico de los datos de campo.",
       "datos": [],
       "fotos": [
         {
           "src": "assets/equipos/puesto-trabajo.jpg",
-          "alt": "Notebook, control remoto, receptor GNSS y drone sobre la mesa de trabajo"
+          "alt": "Puesto de trabajo con notebook, control remoto, receptor Emlid Reach RS2 y el cuadricóptero X650"
         }
       ]
     }
