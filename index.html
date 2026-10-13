@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=10">
+  <link rel="stylesheet" href="assets/styles.css?v=12">
   <script>self.ModelViewerElement = { dracoDecoderLocation: new URL("assets/vendor/draco/", location.href).href };</script>
   <script type="module" src="assets/vendor/model-viewer.min.js"></script>
 </head>
@@ -18,8 +18,9 @@
       <a class="brand" href="./"><span class="brand-mark"></span><span data-site="titulo">Modelos 3D</span></a>
       <nav class="nav">
         <a href="#galeria">Modelos</a>
+        <a href="#servicios">Servicios</a>
         <a href="#equipos">Equipos</a>
-        <a href="#acerca">Acerca</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
@@ -68,6 +69,18 @@
       </div>
     </section>
 
+    <section class="section sv-section" id="servicios" hidden>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Servicios</div>
+            <h2>Para qué se usa</h2>
+          </div>
+        </div>
+        <div class="sv-grid" id="sv-grid"></div>
+      </div>
+    </section>
+
     <section class="section eq-section" id="equipos" hidden>
       <div class="wrap">
         <div class="section-head">
@@ -87,16 +100,28 @@
         <p style="color:var(--muted)">Cada modelo se reconstruye a partir de decenas o cientos de fotografías tomadas alrededor del objeto. El software de fotogrametría detecta puntos en común entre las fotos, calcula su posición en el espacio y genera una malla con textura real. Podés girarlos con el mouse o con el dedo, acercarte con la rueda o pellizcando, y en celulares compatibles verlos en realidad aumentada.</p>
       </div>
     </section>
+    <section class="section ct-section" id="contacto" hidden>
+      <div class="wrap">
+        <div class="ct-box">
+          <div>
+            <div class="eyebrow">Contacto</div>
+            <h2>¿Tenés un predio, una obra o un acopio para relevar?</h2>
+            <p>Escribime por WhatsApp o por mail y vemos qué necesitás. <b id="ct-nombre"></b></p>
+          </div>
+          <div class="ct-btns" id="ct-btns"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
       <span>© <span id="year"></span> <span data-site="autor"></span></span>
-      <span class="mono" style="font-size:12px">Visor: model-viewer</span>
+      <span class="mono" style="font-size:12px" id="footer-contact"></span>
     </div>
   </footer>
 
-  <script src="assets/app.js?v=10"></script>
+  <script src="assets/app.js?v=12"></script>
   <script>initGallery();</script>
 </body>
 </html>

@@ -52,6 +52,8 @@ async function initGallery() {
   }
   applySite(data.sitio);
   renderEquipos(data.equipos);
+  renderServicios(data.servicios);
+  renderContacto(data.sitio?.contacto);
   const modelos = data.modelos;
 
   // Stats
@@ -88,7 +90,7 @@ async function initGallery() {
     }
     grid.innerHTML = lista.map((m) => `
       <article class="card">
-        <a class="card-link" href="viewer.html?m=${encodeURIComponent(m.id)}">
+        <a class="card-link" href="${m.practico ? 'proyecto.html' : 'viewer.html'}?m=${encodeURIComponent(m.id)}">
           <div class="thumb">
             ${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy">` : PLACEHOLDER}
             <span class="badge">3D</span>
@@ -105,7 +107,8 @@ async function initGallery() {
           </div>
         </a>
         <div class="card-actions">
-          <a class="chip primary" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver en 3D</a>
+          ${m.practico ? `<a class="chip primary" href="proyecto.html?m=${encodeURIComponent(m.id)}">Ver proyecto</a>` : ''}
+          <a class="chip${m.practico ? '' : ' primary'}" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver en 3D</a>
           ${m.ortofoto ? `<a class="chip" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto y mediciones</a>` : ''}
           ${m.calidad ? `<a class="chip" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
           ${m.reporte ? `<a class="chip" href="${esc(m.reporte)}" target="_blank" rel="noopener">Reporte PDF ↓</a>` : ''}
@@ -151,12 +154,13 @@ async function initViewer() {
     ['Etiquetas', (m.etiquetas || []).join(', ')],
   ].filter(([, v]) => v);
   document.getElementById('p-meta').innerHTML = meta.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
-  if (m.calidad || m.reporte || m.ortofoto) {
+  if (m.calidad || m.reporte || m.ortofoto || m.practico) {
     const q = document.getElementById('p-calidad');
     const kp = (m.calidad?.indicadores || []).slice(0, 4);
     q.innerHTML = `
       ${kp.length ? `<div class="p-kpis">${kp.map((k) => `<div><b>${esc(k.valor)}</b><span>${esc(k.label)}</span></div>`).join('')}</div>` : ''}
-      ${m.calidad ? `<a class="btn" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
+      ${m.practico ? `<a class="btn" href="proyecto.html?m=${encodeURIComponent(m.id)}">Para qué sirve</a>` : ''}
+      ${m.calidad ? `<a class="btn ghost" href="calidad.html?m=${encodeURIComponent(m.id)}">Calidad</a>` : ''}
       ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto</a>` : ''}
       ${m.reporte ? `<a class="btn ghost" href="${esc(m.reporte)}" target="_blank" rel="noopener">PDF</a>` : ''}`;
     q.hidden = false;
@@ -230,6 +234,7 @@ async function initCalidad() {
     root.innerHTML = '<p class="empty">No se pudo cargar la información.</p>'; return;
   }
   applySite(data.sitio);
+  renderContacto(data.sitio?.contacto);
   const m = data.modelos.find((x) => x.id === id);
   if (!m || !m.calidad) {
     root.innerHTML = '<p class="empty">Este modelo no tiene reporte de calidad.<br><br><a class="btn" href="./#galeria">Volver a la galería</a></p>';
@@ -343,4 +348,98 @@ function renderEquipos(equipos) {
       lb.hidden = false;
     };
   });
+}
+
+/* ---------------- Contacto ---------------- */
+const ICON_WA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>';
+const ICON_MAIL = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
+
+function waLink(c, texto) {
+  if (!c?.whatsapp) return '';
+  return `https://wa.me/${c.whatsapp}?text=${encodeURIComponent(texto || c.mensaje_whatsapp || '')}`;
+}
+function contactButtons(c, texto) {
+  if (!c || typeof c !== 'object') return '';
+  return `
+    ${c.whatsapp ? `<a class="btn wa" href="${esc(waLink(c, texto))}" target="_blank" rel="noopener">${ICON_WA} WhatsApp ${esc(c.telefono || '')}</a>` : ''}
+    ${c.email ? `<a class="btn ghost" href="mailto:${esc(c.email)}?subject=${encodeURIComponent('Consulta por relevamiento')}">${ICON_MAIL} ${esc(c.email)}</a>` : ''}`;
+}
+function renderContacto(c) {
+  if (!c || typeof c !== 'object') return;
+  const sec = document.getElementById('contacto');
+  if (sec) {
+    document.getElementById('ct-nombre').textContent = c.nombre || '';
+    document.getElementById('ct-btns').innerHTML = contactButtons(c);
+    sec.hidden = false;
+  }
+  const fc = document.getElementById('footer-contact');
+  if (fc) fc.innerHTML = [c.telefono && `Tel./WhatsApp ${esc(c.telefono)}`, c.email && `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>`].filter(Boolean).join(' · ');
+  if (c.whatsapp && !document.getElementById('wa-float')) {
+    const a = document.createElement('a');
+    a.id = 'wa-float'; a.className = 'wa-float'; a.href = waLink(c); a.target = '_blank'; a.rel = 'noopener';
+    a.title = 'Escribime por WhatsApp'; a.setAttribute('aria-label', 'WhatsApp');
+    a.innerHTML = ICON_WA.replace('width="20" height="20"', 'width="28" height="28"');
+    document.body.appendChild(a);
+  }
+}
+
+/* ---------------- Servicios ---------------- */
+function renderServicios(s) {
+  const sec = document.getElementById('servicios');
+  if (!sec || !s?.length) return;
+  document.getElementById('sv-grid').innerHTML = s.map((x, i) => `
+    <article class="sv-card"><span class="sv-n mono">${String(i + 1).padStart(2, '0')}</span>
+      <h3>${esc(x.titulo)}</h3><p>${esc(x.texto)}</p></article>`).join('');
+  sec.hidden = false;
+}
+
+/* ---------------- Página de proyecto ---------------- */
+async function initProyecto() {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const root = document.getElementById('pj');
+  const id = new URLSearchParams(location.search).get('m');
+  let data;
+  try { data = await loadData(); } catch (e) { root.innerHTML = '<p class="empty">No se pudo cargar la información.</p>'; return; }
+  applySite(data.sitio);
+  const c = data.sitio?.contacto;
+  renderContacto(c);
+  const m = data.modelos.find((x) => x.id === id);
+  if (!m) { root.innerHTML = '<p class="empty">Proyecto no encontrado.<br><br><a class="btn" href="./#galeria">Volver a la galería</a></p>'; return; }
+  document.title = `${m.titulo} · ${data.sitio?.titulo || ''}`;
+  const P = m.practico || {};
+  const enc = encodeURIComponent(m.id);
+  const card = (x) => `<article class="pj-card"><h3>${esc(x.titulo)}</h3><p>${esc(x.texto)}</p></article>`;
+  root.innerHTML = `
+    <section class="pj-hero">
+      <div>
+        <div class="eyebrow">${esc(m.ubicacion || 'Proyecto')}${m.fecha ? ' · ' + esc(fmtFecha(m.fecha)) : ''}</div>
+        <h1>${esc(m.titulo)}</h1>
+        ${P.intro ? `<p class="pj-intro">${esc(P.intro)}</p>` : ''}
+        <div class="hero-actions">
+          ${m.archivo ? `<a class="btn" href="viewer.html?m=${enc}">Ver en 3D</a>` : ''}
+          ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${enc}">Medir sobre la foto aérea</a>` : ''}
+        </div>
+      </div>
+      ${m.portada ? `<a class="pj-cover" href="viewer.html?m=${enc}"><img src="${esc(m.portada)}" alt="Vista del modelo 3D de ${esc(m.titulo)}"></a>` : ''}
+    </section>
+
+    ${P.usos?.length ? `<section class="pj-sec"><div class="eyebrow">Para qué sirve</div><h2>Qué se puede hacer con este relevamiento</h2>
+      <div class="pj-grid">${P.usos.map(card).join('')}</div></section>` : ''}
+
+    ${P.entregables?.length ? `<section class="pj-sec"><div class="eyebrow">Qué se entrega</div><h2>Lo que recibe el cliente</h2>
+      <div class="pj-grid four">${P.entregables.map(card).join('')}</div></section>` : ''}
+
+    ${P.pasos?.length ? `<section class="pj-sec"><div class="eyebrow">Cómo se hizo</div><h2>En ${P.pasos.length} pasos</h2>
+      <ol class="pj-steps">${P.pasos.map((s) => `<li><h3>${esc(s.titulo)}</h3><p>${esc(s.texto)}</p></li>`).join('')}</ol></section>` : ''}
+
+    ${P.confiabilidad ? `<section class="pj-sec pj-trust"><div><div class="eyebrow">Qué tan confiable es</div>
+      <p>${esc(P.confiabilidad)}</p></div>
+      ${m.calidad ? `<a class="btn ghost" href="calidad.html?m=${enc}">Ver el detalle técnico</a>` : ''}</section>` : ''}
+
+    ${m.descripcion ? `<section class="pj-sec pj-tech"><div class="eyebrow">Descripción técnica</div><p>${esc(m.descripcion)}</p></section>` : ''}
+
+    ${c && typeof c === 'object' ? `<section class="pj-sec pj-cta">
+      <div><h2>¿Necesitás un relevamiento así?</h2><p>Escribime y lo vemos. ${esc(c.nombre || '')}</p></div>
+      <div class="pj-cta-btns">${contactButtons(c, `Hola Guillermo, vi el relevamiento "${m.titulo}" en tu web y quería consultarte por un trabajo similar.`)}</div>
+    </section>` : ''}`;
 }

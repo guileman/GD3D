@@ -3,8 +3,14 @@
     "titulo": "Modelos 3D",
     "subtitulo": "Relevamientos por fotogrametría",
     "bienvenida": "Edificios y espacios reconstruidos a partir de fotografías. Elegí un modelo y recorrelo en 3D: girá, acercate y miralo desde cualquier ángulo.",
-    "autor": "guileman",
-    "contacto": ""
+    "autor": "Guillermo Díaz",
+    "contacto": {
+      "nombre": "Guillermo Díaz",
+      "telefono": "341 690-4961",
+      "whatsapp": "5493416904961",
+      "email": "guileman.diaz@gmail.com",
+      "mensaje_whatsapp": "Hola Guillermo, vi tus relevamientos en la web y quería consultarte por un trabajo."
+    }
   },
   "modelos": [
     {
@@ -141,6 +147,64 @@
         "geojson": "models/frigorifico-rn11/gcp.geojson",
         "csv": "models/frigorifico-rn11/gcp.csv",
         "kml": "models/frigorifico-rn11/gcp.kml"
+      },
+      "practico": {
+        "intro": "Un registro completo y con fecha de cómo está hoy el predio y cada una de sus construcciones, para tomar decisiones sin tener que ir al lugar ni subir a los techos.",
+        "usos": [
+          {
+            "titulo": "Respaldo del estado actual",
+            "texto": "Queda documentado cómo estaba el predio el 10/09/2026. Sirve como respaldo en una compraventa, una tasación, una sucesión, un seguro o un reclamo."
+          },
+          {
+            "titulo": "Presupuestar sin ir al lugar",
+            "texto": "Se pueden medir sobre la pantalla las superficies de techos a reparar o reemplazar, los metros cuadrados a demoler o el área de vegetación a limpiar."
+          },
+          {
+            "titulo": "Ver techos y zonas peligrosas sin riesgo",
+            "texto": "El estado de las cubiertas y de las estructuras deterioradas se revisa desde el aire, sin que nadie tenga que subir ni entrar a sectores inseguros."
+          },
+          {
+            "titulo": "Base para un proyecto",
+            "texto": "El arquitecto o el agrimensor parten de la foto aérea y del modelo 3D en lugar de relevar todo de cero."
+          },
+          {
+            "titulo": "Comparar en el tiempo",
+            "texto": "Repitiendo el vuelo más adelante se puede ver el avance de una obra o cuánto se deterioró una construcción."
+          }
+        ],
+        "entregables": [
+          {
+            "titulo": "Modelo 3D para recorrer",
+            "texto": "Se gira y se acerca desde la computadora o el celular, sin instalar nada."
+          },
+          {
+            "titulo": "Foto aérea medible",
+            "texto": "Ortofoto de 5 cm por píxel donde se toman distancias, superficies y ángulos con un clic."
+          },
+          {
+            "titulo": "Archivos para profesionales",
+            "texto": "GeoTIFF en coordenadas reales y puntos de control en CSV, KML y GeoJSON, listos para QGIS, AutoCAD o Google Earth."
+          },
+          {
+            "titulo": "Informe de calidad",
+            "texto": "Reporte técnico completo con la precisión obtenida, para respaldar el trabajo."
+          }
+        ],
+        "pasos": [
+          {
+            "titulo": "Vuelo del drone",
+            "texto": "Unos 30 minutos de vuelo y 491 fotos para cubrir 7,35 ha, sin interrumpir la actividad del lugar."
+          },
+          {
+            "titulo": "Puntos medidos en el terreno",
+            "texto": "8 puntos de referencia medidos con GNSS de precisión para que el modelo quede en su posición y escala reales."
+          },
+          {
+            "titulo": "Procesamiento",
+            "texto": "Con las fotos y los puntos se genera el modelo 3D, la foto aérea medible y el informe de calidad."
+          }
+        ],
+        "confiabilidad": "Las distancias y superficies medidas sobre la foto aérea tienen un margen de pocos centímetros; las alturas, de unos 10 cm. Es suficiente para presupuestar, documentar y proyectar."
       }
     },
     {
@@ -289,6 +353,60 @@
         "teselas": "models/escombros-loma-verde/ortofoto/{z}/{x}/{y}.webp",
         "meta": "models/escombros-loma-verde/ortofoto/meta.json",
         "descarga": "models/escombros-loma-verde/ortofoto-escombros-loma-verde.tif"
+      },
+      "practico": {
+        "intro": "Saber cuánto material hay en un acopio para presupuestar su retiro y controlar lo que se mueve, sin estimaciones a ojo.",
+        "usos": [
+          {
+            "titulo": "Cuántos metros cúbicos hay",
+            "texto": "El modelo permite calcular el volumen del acopio y traducirlo en algo concreto: cantidad de camiones o volquetes y costo de retiro y disposición."
+          },
+          {
+            "titulo": "Controlar a un contratista",
+            "texto": "Midiendo antes y después del retiro se verifica cuánto material se sacó realmente y qué se certifica o se cobra."
+          },
+          {
+            "titulo": "Planificar la logística",
+            "texto": "Con la foto aérea medible se definen accesos, lugar de carga y recorrido de los camiones antes de empezar."
+          },
+          {
+            "titulo": "Registro del sitio",
+            "texto": "Queda documentado cómo estaba el lugar en la fecha del relevamiento, útil ante cualquier reclamo posterior."
+          }
+        ],
+        "entregables": [
+          {
+            "titulo": "Modelo 3D para recorrer",
+            "texto": "Se gira y se acerca desde la computadora o el celular, sin instalar nada."
+          },
+          {
+            "titulo": "Foto aérea medible",
+            "texto": "Ortofoto de 1 cm por píxel donde se toman distancias, superficies y ángulos con un clic."
+          },
+          {
+            "titulo": "Archivos para profesionales",
+            "texto": "GeoTIFF en coordenadas reales y puntos de control en CSV, KML y GeoJSON."
+          },
+          {
+            "titulo": "Informe de calidad",
+            "texto": "Reporte técnico con la precisión obtenida."
+          }
+        ],
+        "pasos": [
+          {
+            "titulo": "Toma de fotos aéreas",
+            "texto": "Unos 2 minutos de captura y 46 fotos para cubrir 0,44 ha."
+          },
+          {
+            "titulo": "Puntos medidos en el terreno",
+            "texto": "Puntos de referencia medidos con GNSS para dar al modelo su posición y escala reales."
+          },
+          {
+            "titulo": "Procesamiento",
+            "texto": "Con las fotos y los puntos se genera el modelo 3D, la foto aérea medible y el informe de calidad."
+          }
+        ],
+        "confiabilidad": "Las medidas tienen un margen de unos 15 cm en planta y 25 cm en altura: alcanza para estimar el volumen y planificar el retiro. Para un cómputo de mayor precisión se puede reprocesar con más puntos de control."
       }
     }
   ],
@@ -400,6 +518,28 @@
           "alt": "Puesto de trabajo con notebook, control remoto, receptor Emlid Reach RS2 y el cuadricóptero X650"
         }
       ]
+    }
+  ],
+  "servicios": [
+    {
+      "titulo": "Cómputo de volúmenes",
+      "texto": "Acopios de áridos, escombros, tierra o cereal: cuántos m³ hay, cuántos camiones hacen falta para moverlos y cuánto se retiró entre una medición y otra."
+    },
+    {
+      "titulo": "Estado edilicio",
+      "texto": "Registro con fecha del estado de un predio y sus construcciones: superficies, techos y cerramientos, para tasaciones, compraventas, seguros o antes de una obra."
+    },
+    {
+      "titulo": "Avance de obra",
+      "texto": "Vuelos periódicos sobre la misma obra para comparar etapas, controlar certificaciones y tener un historial visual de lo hecho."
+    },
+    {
+      "titulo": "Ortofotos y planos base",
+      "texto": "Fotos aéreas medibles y georreferenciadas que arquitectos, agrimensores e ingenieros pueden usar directamente como base de proyecto."
+    },
+    {
+      "titulo": "Puntos de control GNSS",
+      "texto": "Medición en campo con receptores GNSS de precisión para que los modelos queden en coordenadas reales y las medidas sean confiables."
     }
   ]
 }
