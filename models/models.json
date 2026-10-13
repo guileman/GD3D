@@ -15,15 +15,122 @@
       "portada": "models/frigorifico-rn11/portada.jpg",
       "fecha": "2026-09-10",
       "ubicacion": "Ruta Nacional 11 · Juan de Garay",
-      "fotos": null,
-      "software": "WebODM",
+      "fotos": 491,
+      "software": "ODX 3.8.3",
       "etiquetas": [
         "frigorífico",
         "drone",
         "edificio"
       ],
       "orientacion": "0deg -90deg 0deg",
-      "camara": "20deg 55deg 75%"
+      "camara": "20deg 55deg 75%",
+      "reporte": "models/frigorifico-rn11/reporte-calidad.pdf",
+      "calidad": {
+        "veredicto": "Apto para relevamiento planimétrico al centímetro y altimetría del orden de 10 cm.",
+        "resumen": "El modelo se reconstruyó casi completo, con muy alto nivel de detalle y un ajuste a los puntos de control de pocos milímetros en planta. La componente vertical es la menos precisa, y los bordes del relevamiento y algunas zonas de vegetación tienen menos cobertura de fotos.",
+        "datos": [
+          [
+            "Fecha de vuelo",
+            "10/09/2026, 12:00 a 12:30"
+          ],
+          [
+            "Procesado",
+            "21/09/2026 · 48 min"
+          ],
+          [
+            "Superficie",
+            "7,35 ha (0,0735 km²)"
+          ],
+          [
+            "Cámara",
+            "DJI FC6310 · 4864 × 3648 px"
+          ],
+          [
+            "Georreferencia",
+            "GPS del drone + 8 puntos de control (GCP)"
+          ]
+        ],
+        "indicadores": [
+          {
+            "valor": "98,6 %",
+            "label": "Fotos reconstruidas",
+            "nota": "484 de 491"
+          },
+          {
+            "valor": "0,97 cm",
+            "label": "GSD promedio",
+            "nota": "tamaño de píxel en el terreno"
+          },
+          {
+            "valor": "0,5 cm",
+            "label": "Precisión horizontal",
+            "nota": "CE90 absoluta"
+          },
+          {
+            "valor": "10 cm",
+            "label": "Precisión vertical",
+            "nota": "LE90 absoluta"
+          },
+          {
+            "valor": "4,1 cm",
+            "label": "RMS en GCP",
+            "nota": "8 puntos de control"
+          },
+          {
+            "valor": "0,93 px",
+            "label": "Error de reproyección",
+            "nota": "promedio"
+          },
+          {
+            "valor": "75 M",
+            "label": "Puntos densos",
+            "nota": "nube densa"
+          }
+        ],
+        "conclusiones": [
+          {
+            "tipo": "ok",
+            "titulo": "Reconstrucción completa",
+            "texto": "Se orientaron 484 de las 491 fotos (98,6 %) y el 95,9 % de los puntos de la nube dispersa. La nube densa tiene unos 75 millones de puntos."
+          },
+          {
+            "tipo": "ok",
+            "titulo": "Muy alto nivel de detalle",
+            "texto": "El GSD promedio es de 0,97 cm por píxel: se distinguen objetos de un par de centímetros en la ortofoto y en las texturas del modelo."
+          },
+          {
+            "tipo": "ok",
+            "titulo": "Planimetría de precisión centimétrica",
+            "texto": "Con los puntos de control, el error en X e Y es de unos 2 mm RMS. La precisión horizontal absoluta (CE90) es de 0,5 cm y la relativa de 4,8 cm."
+          },
+          {
+            "tipo": "atencion",
+            "titulo": "La altimetría es el punto más débil",
+            "texto": "El error vertical en los GCP es de 5,7 cm RMS, con un máximo de −12,3 cm en el GCP12 y +7,8 cm en el GCP10. La precisión vertical (LE90) ronda los 10 cm, y el error vertical de la nube 3D llega a 27 cm RMS."
+          },
+          {
+            "tipo": "ok",
+            "titulo": "Buena geometría interna",
+            "texto": "El error de reproyección promedio es de 0,93 px, por debajo de 1 px. Cada punto se ve en promedio en 3,7 fotos, y la calibración de la cámara corrigió solo distorsiones chicas."
+          },
+          {
+            "tipo": "atencion",
+            "titulo": "Menor cobertura en bordes y vegetación",
+            "texto": "La mayor parte del área se ve en 5 o más fotos, pero los bordes y algunas zonas arboladas tienen 2 o 3. Ahí el modelo tiene huecos y menos definición. Algunas fotos reconstruyeron muy pocos puntos (mínimo 29)."
+          },
+          {
+            "tipo": "info",
+            "titulo": "El GPS del drone solo no alcanza",
+            "texto": "Sin control terrestre, el GPS de a bordo tenía un error de 27,8 m, casi todo en altura (25,7 m de desvío medio). Este desvío es habitual con altitudes de GPS sin corregir y quedó resuelto con los GCP."
+          },
+          {
+            "tipo": "info",
+            "titulo": "Recomendación",
+            "texto": "Los errores en los GCP miden cuánto se ajustó el modelo a esos mismos puntos, no una precisión independiente. Para validar la exactitud real conviene medir algunos puntos de chequeo que no se usen en el ajuste, sobre todo para verificar la altimetría."
+          }
+        ],
+        "imagen_superposicion": "models/frigorifico-rn11/superposicion.png"
+      }
     }
   ]
 }

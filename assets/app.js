@@ -85,6 +85,7 @@ async function initGallery() {
         <div class="thumb">
           ${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy">` : PLACEHOLDER}
           <span class="badge">3D</span>
+          ${m.calidad ? '<span class="badge q">Reporte de calidad</span>' : ''}
         </div>
         <div class="card-body">
           <h3>${esc(m.titulo)}</h3>
@@ -137,6 +138,15 @@ async function initViewer() {
     ['Etiquetas', (m.etiquetas || []).join(', ')],
   ].filter(([, v]) => v);
   document.getElementById('p-meta').innerHTML = meta.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  if (m.calidad || m.reporte) {
+    const q = document.getElementById('p-calidad');
+    const kp = (m.calidad?.indicadores || []).slice(0, 4);
+    q.innerHTML = `
+      ${kp.length ? `<div class="p-kpis">${kp.map((k) => `<div><b>${esc(k.valor)}</b><span>${esc(k.label)}</span></div>`).join('')}</div>` : ''}
+      ${m.calidad ? `<a class="btn" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
+      ${m.reporte ? `<a class="btn ghost" href="${esc(m.reporte)}" target="_blank" rel="noopener">PDF</a>` : ''}`;
+    q.hidden = false;
+  }
 
   if (m.portada) mv.poster = m.portada;
   if (m.orientacion) mv.orientation = m.orientacion; // opcional, ej. "0deg -90deg 0deg" para modelos Z-arriba
@@ -194,4 +204,62 @@ async function initViewer() {
     if (document.fullscreenElement) document.exitFullscreen();
     else document.documentElement.requestFullscreen?.();
   };
+}
+
+/* ---------------- Reporte de calidad ---------------- */
+async function initCalidad() {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const root = document.getElementById('q');
+  const id = new URLSearchParams(location.search).get('m');
+  let data;
+  try { data = await loadData(); } catch (e) {
+    root.innerHTML = '<p class="empty">No se pudo cargar la información.</p>'; return;
+  }
+  applySite(data.sitio);
+  const m = data.modelos.find((x) => x.id === id);
+  if (!m || !m.calidad) {
+    root.innerHTML = '<p class="empty">Este modelo no tiene reporte de calidad.<br><br><a class="btn" href="./#galeria">Volver a la galería</a></p>';
+    return;
+  }
+  const c = m.calidad;
+  document.title = `Calidad · ${m.titulo}`;
+  const icon = { ok: '✓', atencion: '!', info: 'i' };
+  root.innerHTML = `
+    <div class="q-head">
+      <div>
+        <div class="eyebrow">Reporte de calidad</div>
+        <h1>${esc(m.titulo)}</h1>
+        <p class="q-verdict">${esc(c.veredicto)}</p>
+        <p class="q-lead">${esc(c.resumen)}</p>
+      </div>
+      <div class="q-actions">
+        <a class="btn" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver modelo 3D</a>
+        ${m.reporte ? `<a class="btn ghost" href="${esc(m.reporte)}" target="_blank" rel="noopener">Reporte completo (PDF)</a>` : ''}
+      </div>
+    </div>
+
+    <div class="q-kpis">
+      ${(c.indicadores || []).map((k) => `
+        <div class="q-kpi"><b>${esc(k.valor)}</b><span>${esc(k.label)}</span>${k.nota ? `<small>${esc(k.nota)}</small>` : ''}</div>`).join('')}
+    </div>
+
+    <div class="q-grid">
+      <section>
+        <h2>Conclusiones</h2>
+        <ul class="q-list">
+          ${(c.conclusiones || []).map((x) => `
+            <li class="q-item ${esc(x.tipo)}">
+              <span class="q-ico">${icon[x.tipo] || 'i'}</span>
+              <div><h3>${esc(x.titulo)}</h3><p>${esc(x.texto)}</p></div>
+            </li>`).join('')}
+        </ul>
+      </section>
+      <aside>
+        ${c.datos?.length ? `<h2>Datos del relevamiento</h2>
+          <dl class="q-dl">${c.datos.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : ''}
+        ${c.imagen_superposicion ? `<h2>Superposición de fotos</h2>
+          <figure class="q-fig"><img src="${esc(c.imagen_superposicion)}" alt="Mapa de cantidad de fotos que ven cada punto del terreno">
+          <figcaption>Cantidad de fotos que ven cada zona. Verde oscuro: 5 o más; rojo: solo 2.</figcaption></figure>` : ''}
+      </aside>
+    </div>`;
 }

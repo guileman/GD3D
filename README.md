@@ -41,6 +41,10 @@ models/<id>/          Un modelo por carpeta (modelo.glb + portada.jpg)
 
 `portada`, `camara` y `orientacion` son opcionales. Usá `"orientacion": "0deg -90deg 0deg"` para modelos exportados con Z hacia arriba (WebODM, Metashape): si no, se ven "acostados". En `camara`, el tercer valor puede ser `auto` o un porcentaje de la distancia por defecto (ej. `75%` para acercar). La **portada** se genera fácil: abrí el modelo en el visor, encuadralo como te guste y tocá el botón de la cámara 📷. Se descarga un JPG; guardalo en la carpeta del modelo como `portada.jpg`.
 
+### Reporte de calidad (opcional)
+
+Si el modelo tiene reporte, agregá `"reporte": "models/mi-modelo/reporte.pdf"` y un bloque `"calidad"` con `veredicto`, `resumen`, `datos`, `indicadores` y `conclusiones` (ver el frigorífico en `models.json` como ejemplo). Se genera automáticamente la página `calidad.html?m=<id>`, con enlaces desde el visor y una etiqueta en la galería.
+
 Los textos de la portada (título, bienvenida, autor) se editan en el bloque `"sitio"` del mismo `models.json`.
 
 ## Optimizar modelos pesados
