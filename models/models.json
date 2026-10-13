@@ -205,6 +205,11 @@
           }
         ],
         "confiabilidad": "Las distancias y superficies medidas sobre la foto aérea tienen un margen de pocos centímetros; las alturas, de unos 10 cm. Es suficiente para presupuestar, documentar y proyectar."
+      },
+      "variantes": {
+        "baja": "models/frigorifico-rn11/modelo-baja.glb",
+        "media": "models/frigorifico-rn11/modelo-media.glb",
+        "alta": "models/frigorifico-rn11/modelo.glb"
       }
     },
     {
@@ -447,6 +452,11 @@
         "imagen_alt": "Cálculo de volumen en WebODM sobre el modelo digital de superficie",
         "geojson": "models/escombros-loma-verde/volumen.geojson",
         "etiqueta_mapa": "936 m³"
+      },
+      "variantes": {
+        "baja": "models/escombros-loma-verde/modelo-baja.glb",
+        "media": "models/escombros-loma-verde/modelo-media.glb",
+        "alta": "models/escombros-loma-verde/modelo.glb"
       }
     }
   ],

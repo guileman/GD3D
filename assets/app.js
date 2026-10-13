@@ -30,6 +30,23 @@ function applySite(sitio = {}) {
   });
 }
 
+/* Calidad del modelo según el equipo: los modelos de fotogrametría tienen muchas
+   texturas y en celulares pueden agotar la memoria gráfica y cerrar la página. */
+const CALIDADES = { baja: 'Baja', media: 'Media', alta: 'Alta' };
+function equipoLiviano() {
+  const mem = navigator.deviceMemory || 8;
+  return matchMedia('(pointer: coarse)').matches || matchMedia('(max-width: 820px)').matches || mem <= 4;
+}
+function archivoModelo(m, nivel) {
+  const v = m.variantes || {};
+  return v[nivel] || v.media || v.baja || m.archivo;
+}
+function calidadInicial(m) {
+  const q = new URLSearchParams(location.search).get('q');
+  if (q && (m.variantes || {})[q]) return q;
+  return equipoLiviano() ? 'baja' : 'media';
+}
+
 const PLACEHOLDER = `
   <svg viewBox="0 0 120 90" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
     <g fill="none" stroke="#e0a35c" stroke-width="1.2" opacity=".75" transform="translate(60 47)">
@@ -68,10 +85,18 @@ async function initGallery() {
   const heroOpen = document.getElementById('hero-open');
   if (ultimo) {
     const hm = document.getElementById('hero-model');
-    if (ultimo.orientacion) hm.orientation = ultimo.orientacion;
-    if (ultimo.camara) hm.cameraOrbit = ultimo.camara;
-    hm.src = ultimo.archivo;
-    if (ultimo.portada) hm.poster = ultimo.portada;
+    if (equipoLiviano() && ultimo.portada) {
+      // En celulares: imagen fija (liviana) que abre el visor al tocarla
+      const a = document.createElement('a');
+      a.className = 'hero-img'; a.href = 'viewer.html?m=' + encodeURIComponent(ultimo.id);
+      a.innerHTML = `<img src="${esc(ultimo.portada)}" alt="${esc(ultimo.titulo)}"><span class="hero-play">Tocá para ver en 3D</span>`;
+      hm.replaceWith(a);
+    } else {
+      if (ultimo.orientacion) hm.orientation = ultimo.orientacion;
+      if (ultimo.camara) hm.cameraOrbit = ultimo.camara;
+      hm.src = archivoModelo(ultimo, 'baja');
+      if (ultimo.portada) hm.poster = ultimo.portada;
+    }
     document.getElementById('hero-tag').textContent = ultimo.titulo;
     heroOpen.href = 'viewer.html?m=' + encodeURIComponent(ultimo.id);
     const heroRep = document.getElementById('hero-report');
@@ -171,7 +196,28 @@ async function initViewer() {
   if (m.orientacion) mv.orientation = m.orientacion; // opcional, ej. "0deg -90deg 0deg" para modelos Z-arriba
   if (m.camara) mv.cameraOrbit = m.camara;   // opcional, ej. "45deg 70deg 30m"
   mv.alt = m.titulo;
-  mv.src = m.archivo;
+  let nivel = calidadInicial(m);
+  mv.src = archivoModelo(m, nivel);
+
+  // Selector de calidad
+  const qsel = document.getElementById('q-sel');
+  if (qsel && m.variantes) {
+    const niveles = Object.keys(CALIDADES).filter((k) => m.variantes[k]);
+    qsel.innerHTML = `<span>Calidad</span>${niveles.map((k) => `<button data-q="${k}" class="${k === nivel ? 'on' : ''}">${CALIDADES[k]}</button>`).join('')}`;
+    qsel.hidden = false;
+    qsel.querySelectorAll('button').forEach((b) => {
+      b.onclick = () => {
+        const k = b.dataset.q;
+        if (k === nivel) return;
+        if (k === 'alta' && !confirm('La calidad alta usa mucha memoria gráfica y puede cerrar la página en equipos con poca memoria o en celulares. ¿Cargarla igual?')) return;
+        nivel = k;
+        qsel.querySelectorAll('button').forEach((x) => x.classList.toggle('on', x.dataset.q === k));
+        progress.style.opacity = 1; progress.style.width = '0';
+        loading.classList.remove('hide');
+        mv.src = archivoModelo(m, k);
+      };
+    });
+  }
 
   mv.addEventListener('progress', (e) => {
     const p = e.detail.totalProgress;
