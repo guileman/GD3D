@@ -10,7 +10,7 @@
     {
       "id": "frigorifico-rn11",
       "titulo": "Frigorífico — Ruta Nacional 11",
-      "descripcion": "Relevamiento aéreo del frigorífico sobre Ruta Nacional 11, Juan de Garay. Modelo texturizado generado por fotogrametría a partir de vuelos con drone.",
+      "descripcion": "Relevamiento fotogramétrico aéreo con apoyo terrestre GNSS (8 puntos de control) para documentar el estado actual de las construcciones del predio. Registra la implantación de las edificaciones, sus superficies cubiertas y semicubiertas, el estado de cubiertas, cerramientos y elementos estructurales visibles, y las áreas libres y de circulación, como base para el relevamiento de mejoras existentes. Productos: modelo 3D texturizado y ortofotomosaico georreferenciado en UTM 20S (WGS 84).",
       "archivo": "models/frigorifico-rn11/modelo.glb",
       "portada": "models/frigorifico-rn11/portada.jpg",
       "fecha": "2026-09-10",
@@ -20,7 +20,8 @@
       "etiquetas": [
         "frigorífico",
         "drone",
-        "edificio"
+        "edificio",
+        "estado edilicio"
       ],
       "orientacion": "0deg -90deg 0deg",
       "camara": "20deg 55deg 75%",
@@ -145,7 +146,7 @@
     {
       "id": "escombros-loma-verde",
       "titulo": "Escombros — Loma Verde",
-      "descripcion": "Relevamiento fotogramétrico de un sector con acopio de escombros en Loma Verde, con 46 fotos de una cámara Sony α6000. Modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.",
+      "descripcion": "Relevamiento fotogramétrico de un acopio de escombros orientado a determinar su volumen. El modelo digital de superficie permite cubicar el material por diferencia respecto de una superficie de base que represente el terreno natural. Productos: modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.",
       "archivo": "models/escombros-loma-verde/modelo.glb",
       "portada": "models/escombros-loma-verde/portada.jpg",
       "fecha": "2023-10-08",
@@ -154,7 +155,8 @@
       "software": "ODX 3.8.3",
       "etiquetas": [
         "escombros",
-        "Sony α6000"
+        "Sony α6000",
+        "volumen"
       ],
       "orientacion": "0deg -90deg 0deg",
       "camara": "25deg 55deg 80%",

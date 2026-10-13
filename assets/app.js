@@ -95,7 +95,7 @@ async function initGallery() {
           </div>
           <div class="card-body">
             <h3>${esc(m.titulo)}</h3>
-            ${m.descripcion ? `<p>${esc(m.descripcion)}</p>` : ''}
+            ${m.descripcion ? `<p title="${esc(m.descripcion)}">${esc(m.descripcion)}</p>` : ''}
             ${m.etiquetas?.length ? `<div class="tags">${m.etiquetas.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
             <div class="meta">
               ${m.ubicacion && m.ubicacion !== '—' ? `<span>${esc(m.ubicacion)}</span>` : ''}
