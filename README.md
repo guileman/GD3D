@@ -92,4 +92,4 @@ python3 -m http.server 8000
 
 1. Subí el contenido de esta carpeta a la raíz del repositorio.
 2. En el repo, andá a **Settings → Pages → Source: Deploy from a branch**, elegí `main` y la carpeta `/ (root)`.
-3. Unos minutos después la web queda en **https://guileman.github.io/GD3D/**.
+3. Unos minutos después la web queda en **https://e4d.com.ar** (dominio propio; el archivo `CNAME` lo configura). También responde https://guileman.github.io/GD3D/, que redirige al dominio.
