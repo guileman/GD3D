@@ -1,4 +1,4 @@
-# GD3D — galería de relevamientos por fotogrametría
+# e4d — galería de relevamientos por fotogrametría
 
 Sitio estático para publicar modelos 3D hechos con fotogrametría. Tiene una portada de bienvenida, una galería con buscador y un visor 3D para cada modelo. No necesita compilar nada y funciona directo en **GitHub Pages**.
 

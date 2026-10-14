@@ -454,7 +454,7 @@ body.viewer-page { height: 100dvh; overflow: hidden; }
 /* Título de portada más largo */
 .hero h1 { font-size: clamp(36px, 5vw, 66px); line-height: 1.02; }
 
-/* ---------- Logotipo GD3D ---------- */
+/* ---------- Logotipo e4d ---------- */
 .brand img { display: block; height: 34px; width: auto; }
 .brand-mini { display: none !important; }
 @media (max-width: 520px) {
