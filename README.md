@@ -93,3 +93,9 @@ python3 -m http.server 8000
 1. Subí el contenido de esta carpeta a la raíz del repositorio.
 2. En el repo, andá a **Settings → Pages → Source: Deploy from a branch**, elegí `main` y la carpeta `/ (root)`.
 3. Unos minutos después la web queda en **https://e4d.com.ar** (dominio propio; el archivo `CNAME` lo configura). También responde https://guileman.github.io/GD3D/, que redirige al dominio.
+
+## Buscadores (SEO)
+
+- `robots.txt` y `sitemap.xml` en la raíz. Al agregar un modelo, regenerá el sitemap con `python3 tools/generar_sitemap.py`.
+- La portada tiene datos estructurados (schema.org `ProfessionalService`) con contacto, zona y servicios.
+- Cada página de proyecto arma su propio título, descripción e imagen para compartir a partir de `practico.intro` y `portada`.

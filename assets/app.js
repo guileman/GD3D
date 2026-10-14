@@ -440,6 +440,24 @@ function renderServicios(s) {
   sec.hidden = false;
 }
 
+
+/* Metadatos para buscadores y vista previa al compartir */
+function setMeta(desc, url, img) {
+  const put = (sel, attr, key, val) => {
+    if (!val) return;
+    let el = document.head.querySelector(sel);
+    if (!el) { el = document.createElement(sel.startsWith('link') ? 'link' : 'meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+    el.setAttribute(sel.startsWith('link') ? 'href' : 'content', val);
+  };
+  const abs = img ? new URL(img, 'https://e4d.com.ar/').href : '';
+  put('meta[name="description"]', 'name', 'description', desc);
+  put('link[rel="canonical"]', 'rel', 'canonical', url);
+  put('meta[property="og:title"]', 'property', 'og:title', document.title);
+  put('meta[property="og:description"]', 'property', 'og:description', desc);
+  put('meta[property="og:url"]', 'property', 'og:url', url);
+  put('meta[property="og:image"]', 'property', 'og:image', abs);
+}
+
 /* ---------------- Página de proyecto ---------------- */
 async function initProyecto() {
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -452,8 +470,9 @@ async function initProyecto() {
   renderContacto(c);
   const m = data.modelos.find((x) => x.id === id);
   if (!m) { root.innerHTML = '<p class="empty">Proyecto no encontrado.<br><br><a class="btn" href="./#galeria">Volver a la galería</a></p>'; return; }
-  document.title = `${m.titulo} · ${data.sitio?.titulo || ''}`;
+  document.title = `${m.titulo} · ${data.sitio?.titulo || ''} · relevamiento con drone`;
   const P = m.practico || {};
+  setMeta(P.intro || m.descripcion || '', `https://e4d.com.ar/proyecto.html?m=${encodeURIComponent(m.id)}`, m.portada);
   const enc = encodeURIComponent(m.id);
   const card = (x) => `<article class="pj-card"><h3>${esc(x.titulo)}</h3><p>${esc(x.texto)}</p></article>`;
   root.innerHTML = `
