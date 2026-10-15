@@ -493,23 +493,47 @@
     {
       "nombre": "Cuadricóptero X650 · Rover 1",
       "tipo": "Drone de desarrollo propio",
-      "descripcion": "Cuadricóptero de armado propio sobre chasis X650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control, y una cámara Canon para fotogrametría.",
+      "descripcion": "Cuadricóptero de armado propio sobre chasis Tarot 650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control, y una cámara Canon para fotogrametría. En los vuelos de prueba, con 3 kg al despegue, se proyecta una autonomía de unos 35 minutos.",
       "datos": [
         [
+          "Chasis",
+          "Tarot 650 · fibra de carbono"
+        ],
+        [
+          "Motores",
+          "Gartt 4108 · 620 kV"
+        ],
+        [
+          "Variadores",
+          "Hobbywing XRotor Pro 40 A"
+        ],
+        [
+          "Hélices",
+          "15 × 5,5\" nylon con fibra de carbono"
+        ],
+        [
+          "Controladora",
+          "CUAV V5 Nano · ArduPilot"
+        ],
+        [
           "Posicionamiento",
-          "GPS RTK a bordo (simpleRTK2B)"
+          "GPS RTK a bordo (simpleRTK2B Lite)"
         ],
         [
           "Corrección",
           "Base RTK propia"
         ],
         [
-          "Piloto automático",
-          "ArduPilot"
+          "Radio y video",
+          "Skydroid H16"
         ],
         [
-          "Controladora",
-          "CUAV Nano V5"
+          "Peso al despegue",
+          "≈ 3 kg"
+        ],
+        [
+          "Autonomía",
+          "≈ 35 min estimada (pruebas de 16–17 min)"
         ],
         [
           "Cámara",
