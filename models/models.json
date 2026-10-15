@@ -823,7 +823,7 @@
     },
     {
       "titulo": "Puntos de control GNSS",
-      "texto": "Medición en campo con receptores GNSS de precisión para que los modelos queden en coordenadas reales y las medidas sean confiables."
+      "texto": "Medición en campo con receptores GNSS de precisión centimétrica, para que los modelos también tengan precisión centimétrica y queden georreferenciados en coordenadas reales."
     }
   ]
 }
