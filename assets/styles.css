@@ -500,3 +500,20 @@ body.viewer-page { height: 100dvh; overflow: hidden; }
   .kpi-strip div:nth-child(even) { border-left: 1px solid var(--line); }
   .tests, .spec-cols { grid-template-columns: 1fr; }
 }
+.rtk-test { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 36px; padding: 24px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.rtk-txt h3 { margin: 6px 0 10px; font-size: 20px; }
+.rtk-txt p { color: var(--muted); margin: 0 0 16px; font-size: 14.5px; }
+.rtk-res { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 16px; }
+.rtk-res th { text-align: left; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; padding: 0 10px 8px 0; border-bottom: 1px solid var(--line); }
+.rtk-res td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+.rtk-res td:first-child { color: var(--text); white-space: nowrap; }
+.rtk-res td b { color: var(--accent); white-space: nowrap; }
+.rtk-concl { color: var(--text) !important; }
+.rtk-imgs { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; align-content: start; }
+.rtk-imgs figure { margin: 0; }
+.rtk-imgs .eq-ph { aspect-ratio: auto; background: #fff; border-radius: 8px; width: 100%; }
+.rtk-imgs .eq-ph img { object-fit: contain; height: auto; }
+.rtk-imgs figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.test-img { margin-top: 14px; width: 100%; aspect-ratio: auto; border-radius: 6px; }
+.test-img img { height: auto; }
+@media (max-width: 860px) { .rtk-test { grid-template-columns: 1fr; padding: 18px; } .rtk-imgs { grid-template-columns: 1fr; } }

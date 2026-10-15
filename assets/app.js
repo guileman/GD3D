@@ -364,7 +364,7 @@ function renderEquipos(equipos) {
   if (!sec || !equipos?.length) return;
   const grid = document.getElementById('eq-grid');
   grid.innerHTML = equipos.map((e, i) => `
-    <article class="eq-card${i === 0 || (e.fotos || []).length > 1 ? ' wide' : ''}">
+    <article class="eq-card wide">
       <div class="eq-photos n${Math.min((e.fotos || []).length, 2)}">
         ${(e.fotos || []).map((f) => `<button class="eq-ph" data-src="${esc(f.src)}" data-alt="${esc(f.alt || '')}"><img src="${esc(f.src)}" alt="${esc(f.alt || e.nombre)}" loading="lazy"></button>`).join('')}
       </div>
@@ -492,9 +492,15 @@ async function initEquipo() {
       <div class="pj-grid four">${P.porque.map(([t, x]) => `<article class="pj-card"><h3>${esc(t)}</h3><p>${esc(x)}</p></article>`).join('')}</div></section>` : ''}
     ${P.rtk ? `<section class="pj-sec"><div class="eyebrow">Posicionamiento</div><h2>RTK a bordo</h2>
       <p class="pj-lead">${esc(P.rtk.texto)}</p>
-      <ol class="pj-steps">${P.rtk.puntos.map(([t, x]) => `<li><h3>${esc(t)}</h3><p>${esc(x)}</p></li>`).join('')}</ol></section>` : ''}
+      <ol class="pj-steps">${P.rtk.puntos.map(([t, x]) => `<li><h3>${esc(t)}</h3><p>${esc(x)}</p></li>`).join('')}</ol>
+      ${P.rtk.ensayo ? (() => { const E = P.rtk.ensayo; return `<div class="rtk-test">
+        <div class="rtk-txt"><div class="eyebrow">Ensayo</div><h3>${esc(E.titulo)}</h3><p>${esc(E.texto)}</p>
+          <table class="rtk-res"><thead><tr><th>Punto</th><th>Diferencia</th><th></th></tr></thead><tbody>${E.resultados.map(([a, b, c]) => `<tr><td>${esc(a)}</td><td><b>${esc(b)}</b></td><td>${esc(c)}</td></tr>`).join('')}</tbody></table>
+          <p class="rtk-concl">${esc(E.conclusion)}</p></div>
+        <div class="rtk-imgs">${(E.imagenes || []).map((f) => `<figure><button class="eq-ph" data-src="${esc(f.src)}" data-alt="${esc(f.alt)}"><img src="${esc(f.src)}" alt="${esc(f.alt)}" loading="lazy"></button><figcaption>${esc(f.alt)}</figcaption></figure>`).join('')}</div>
+      </div>`; })() : ''}</section>` : ''}
     ${P.pruebas ? `<section class="pj-sec" id="pruebas"><div class="eyebrow">Ensayos</div><h2>Pruebas de vuelo</h2>
-      <div class="tests">${P.pruebas.map((t) => `<article class="pj-card test"><div class="mono test-date">${esc(t.fecha || '')}</div><h3>${esc(t.titulo)}</h3>${tabla(t.datos)}</article>`).join('')}</div></section>` : ''}
+      <div class="tests">${P.pruebas.map((t) => `<article class="pj-card test"><div class="mono test-date">${esc(t.fecha || '')}</div><h3>${esc(t.titulo)}</h3>${tabla(t.datos)}${t.img ? `<button class="eq-ph test-img" data-src="${esc(t.img.src)}" data-alt="${esc(t.img.alt)}"><img src="${esc(t.img.src)}" alt="${esc(t.img.alt)}" loading="lazy"></button>` : ''}</article>`).join('')}</div></section>` : ''}
     <section class="pj-sec" id="ficha"><div class="eyebrow">Ficha técnica</div><h2>Características y capacidades</h2>
       <div class="spec-cols">
         <div class="pj-card"><h3>Componentes</h3>${tabla(e.datos || [])}</div>

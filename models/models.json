@@ -493,7 +493,7 @@
     {
       "nombre": "Rover 1 · Cuadricóptero de mapeo",
       "tipo": "Drone de desarrollo propio",
-      "descripcion": "Cuadricóptero de armado propio sobre chasis Tarot 650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control. En las pruebas, con 3 kg al despegue, proyecta unos 35 minutos de autonomía.",
+      "descripcion": "Cuadricóptero de armado propio sobre chasis Tarot 650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control, y una cámara Sony A6000 de sensor APS-C. En las pruebas, con 3 kg al despegue, proyecta unos 35 minutos de autonomía.",
       "datos": [
         [
           "Chasis",
@@ -528,6 +528,10 @@
           "Skydroid H16"
         ],
         [
+          "Batería",
+          "Li-ion 4S5P (celdas 18650) · ≈ 15.000 mAh"
+        ],
+        [
           "Peso al despegue",
           "≈ 3 kg"
         ],
@@ -537,7 +541,7 @@
         ],
         [
           "Cámara",
-          "Canon"
+          "Sony A6000 · APS-C 24 MP"
         ]
       ],
       "fotos": [
@@ -547,7 +551,7 @@
         },
         {
           "src": "assets/equipos/cuadricoptero-estuche.jpg",
-          "alt": "Rover 1 sobre su estuche con la cámara Canon"
+          "alt": "Rover 1 sobre su estuche con la cámara Sony A6000"
         }
       ],
       "estado": "En desarrollo",
@@ -572,8 +576,8 @@
             "Velocidad máxima"
           ],
           [
-            "RTK",
-            "Posición centimétrica"
+            "≤ 10 cm",
+            "Diferencia RTK vs. RS2"
           ]
         ],
         "porque": [
@@ -586,8 +590,8 @@
             "Motores de bajo kV con hélices de 15\" y baterías 4S de alta capacidad: el objetivo es superar los 30 minutos de vuelo útil, el doble que un drone comercial chico, para cubrir más superficie en una sola batería."
           ],
           [
-            "Cámara intercambiable",
-            "Al no depender de una cámara integrada, se puede montar una cámara de sensor grande (APS-C) y cambiarla según el trabajo."
+            "Cámara de sensor grande",
+            "Al no depender de una cámara integrada, lleva una Sony A6000 de sensor APS-C y 24 MP, más grande que la de los drones comerciales chicos, y se puede cambiar según el trabajo."
           ],
           [
             "Plataforma abierta",
@@ -609,7 +613,39 @@
               "Validación de alturas",
               "En los vuelos de prueba se comparó la altura del GPS con la del barómetro para verificar el comportamiento vertical del sistema. Por ejemplo, en un descenso se registraron 7,7 m en 11,4 s según el GPS."
             ]
-          ]
+          ],
+          "ensayo": {
+            "titulo": "Prueba de precisión: drone vs. receptor Emlid RS2",
+            "texto": "Para comprobar la posición que entrega el RTK del drone, se apoyó el Rover 1 sobre tres puntos del terreno y se registraron sus coordenadas. Después se midieron los mismos tres puntos con un receptor GNSS Emlid Reach RS2 en modo RTK, que se toma como referencia, y se compararon ambas posiciones en QGIS con cálculo elipsoidal (WGS 84).",
+            "resultados": [
+              [
+                "Punto 1",
+                "Coincidente",
+                "drone y RS2 superpuestos a la escala del plano"
+              ],
+              [
+                "Punto 2",
+                "Coincidente",
+                "drone y RS2 superpuestos a la escala del plano"
+              ],
+              [
+                "Punto 3",
+                "10 cm",
+                "diferencia horizontal medida entre ambas posiciones"
+              ]
+            ],
+            "conclusion": "Las posiciones del drone quedaron dentro de los 10 cm respecto del receptor geodésico, con los puntos separados entre sí unos 5,7 m. Es el orden de precisión que se busca para georreferenciar fotos sin depender de muchos puntos de control. El siguiente paso es repetir la prueba en vuelo y con más puntos.",
+            "imagenes": [
+              {
+                "src": "assets/equipos/rtk-control-3-puntos.jpg",
+                "alt": "Los tres puntos de control: posición del drone (UAV) y del receptor Emlid RS2; distancia entre los puntos 1 y 3 de 5,66 m"
+              },
+              {
+                "src": "assets/equipos/rtk-control-punto-3.jpg",
+                "alt": "Detalle del punto 3: diferencia de 0,100 m entre la posición del drone y la del RS2"
+              }
+            ]
+          }
         },
         "pruebas": [
           {
@@ -654,7 +690,11 @@
                 "Proyección",
                 "≈ 39 min de vuelo máximo"
               ]
-            ]
+            ],
+            "img": {
+              "src": "assets/equipos/prueba2-voltaje.jpg",
+              "alt": "Prueba 2: tensión de la batería durante el vuelo, de 16,6 V a 14,75 V en 15 minutos"
+            }
           },
           {
             "titulo": "Prueba 3 · Vuelo largo y análisis de descenso",
@@ -717,7 +757,21 @@
             "60,5 %"
           ]
         ],
-        "nota_rendimiento": "Valores calculados para 3 kg de peso al despegue. Según el cálculo, el diseño supera al 60–75 % de los multicópteros comparables en autonomía, carga útil y alcance."
+        "nota_rendimiento": "Valores calculados para 3 kg de peso al despegue. Según el cálculo, el diseño supera al 60–75 % de los multicópteros comparables en autonomía, carga útil y alcance.",
+        "galeria": [
+          {
+            "src": "assets/equipos/rover1-frente.jpg",
+            "alt": "Rover 1 sobre su estuche, con antena RTK y cámara Sony A6000"
+          },
+          {
+            "src": "assets/equipos/rover1-luna.jpg",
+            "alt": "Rover 1 en vuelo al atardecer"
+          },
+          {
+            "src": "assets/equipos/rtk-control-3-puntos.jpg",
+            "alt": "Prueba RTK: posición del drone vs. Emlid RS2 en tres puntos"
+          }
+        ]
       }
     },
     {
@@ -746,18 +800,6 @@
         {
           "src": "assets/equipos/gnss-campo.jpg",
           "alt": "Receptor Emlid Reach RS2 sobre trípode en el predio del frigorífico"
-        }
-      ]
-    },
-    {
-      "nombre": "Puesto de trabajo",
-      "tipo": "Procesamiento",
-      "descripcion": "Planificación de vuelos, configuración del Rover 1 y procesamiento fotogramétrico de los datos de campo.",
-      "datos": [],
-      "fotos": [
-        {
-          "src": "assets/equipos/puesto-trabajo.jpg",
-          "alt": "Puesto de trabajo con notebook, control remoto, receptor Emlid Reach RS2 y el cuadricóptero Rover 1"
         }
       ]
     }
