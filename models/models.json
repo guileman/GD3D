@@ -491,9 +491,9 @@
       ]
     },
     {
-      "nombre": "Cuadricóptero X650 · Rover 1",
+      "nombre": "Rover 1 · Cuadricóptero de mapeo",
       "tipo": "Drone de desarrollo propio",
-      "descripcion": "Cuadricóptero de armado propio sobre chasis Tarot 650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control, y una cámara Canon para fotogrametría. En los vuelos de prueba, con 3 kg al despegue, se proyecta una autonomía de unos 35 minutos.",
+      "descripcion": "Cuadricóptero de armado propio sobre chasis Tarot 650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control. En las pruebas, con 3 kg al despegue, proyecta unos 35 minutos de autonomía.",
       "datos": [
         [
           "Chasis",
@@ -543,14 +543,182 @@
       "fotos": [
         {
           "src": "assets/equipos/cuadricoptero-vuelo.jpg",
-          "alt": "Cuadricóptero X650 (Rover 1) en vuelo"
+          "alt": "Rover 1 en vuelo"
         },
         {
           "src": "assets/equipos/cuadricoptero-estuche.jpg",
-          "alt": "Cuadricóptero X650 sobre su estuche con la cámara Canon"
+          "alt": "Rover 1 sobre su estuche con la cámara Canon"
         }
       ],
-      "estado": "En desarrollo"
+      "estado": "En desarrollo",
+      "id": "rover-1",
+      "pagina": {
+        "intro": "Un cuadricóptero de mapeo armado y configurado desde cero: chasis de fibra de carbono, piloto automático abierto ArduPilot y GPS RTK a bordo. La idea es tener una plataforma propia, con más autonomía que un drone comercial y la posición de cada foto medida al centímetro.",
+        "kpis": [
+          [
+            "≈ 35 min",
+            "Autonomía proyectada"
+          ],
+          [
+            "3 kg",
+            "Peso al despegue"
+          ],
+          [
+            "2,3 kg",
+            "Carga útil disponible"
+          ],
+          [
+            "58 km/h",
+            "Velocidad máxima"
+          ],
+          [
+            "RTK",
+            "Posición centimétrica"
+          ]
+        ],
+        "porque": [
+          [
+            "Posición de cada foto al centímetro",
+            "Con RTK a bordo, cada disparo queda georreferenciado con precisión centimétrica. Eso reduce la cantidad de puntos de control a medir en el terreno y acelera el trabajo de campo."
+          ],
+          [
+            "Más tiempo en el aire",
+            "Motores de bajo kV con hélices de 15\" y baterías 4S de alta capacidad: el objetivo es superar los 30 minutos de vuelo útil, el doble que un drone comercial chico, para cubrir más superficie en una sola batería."
+          ],
+          [
+            "Cámara intercambiable",
+            "Al no depender de una cámara integrada, se puede montar una cámara de sensor grande (APS-C) y cambiarla según el trabajo."
+          ],
+          [
+            "Plataforma abierta",
+            "ArduPilot permite planificar misiones, ajustar cada parámetro de vuelo y de seguridad, y registrar todo para analizar cada vuelo."
+          ]
+        ],
+        "rtk": {
+          "texto": "El sistema RTK está integrado en el propio drone: un receptor simpleRTK2B Lite con antena multibanda recibe las correcciones de una base RTK propia instalada en el lugar del vuelo. Para que la posición sea válida para fotogrametría se trabajó en tres puntos:",
+          "puntos": [
+            [
+              "Compensación de la antena",
+              "En ArduPilot se cargó la posición física del GPS respecto del centro de la IMU (parámetros GPS_POS_X/Y/Z), para que la coordenada corresponda al centro del drone y no a la antena."
+            ],
+            [
+              "Disparo sincronizado",
+              "La cámara se dispara por cable desde la controladora, así cada foto queda registrada en el log con la posición RTK del instante exacto del disparo."
+            ],
+            [
+              "Validación de alturas",
+              "En los vuelos de prueba se comparó la altura del GPS con la del barómetro para verificar el comportamiento vertical del sistema. Por ejemplo, en un descenso se registraron 7,7 m en 11,4 s según el GPS."
+            ]
+          ]
+        },
+        "pruebas": [
+          {
+            "titulo": "Prueba 1 · Autonomía",
+            "fecha": "",
+            "datos": [
+              [
+                "Peso",
+                "3 kg"
+              ],
+              [
+                "Tiempo de vuelo",
+                "15 min 31 s"
+              ],
+              [
+                "Consumo",
+                "6.469 mAh"
+              ],
+              [
+                "Proyección",
+                "≈ 36 min totales · 22 min con 20 % de reserva"
+              ]
+            ]
+          },
+          {
+            "titulo": "Prueba 2 · Vuelo en campo",
+            "fecha": "05/05/2024",
+            "datos": [
+              [
+                "Tiempo de vuelo",
+                "16 min"
+              ],
+              [
+                "Consumo",
+                "5.325 mAh"
+              ],
+              [
+                "Reserva de seguridad",
+                "20 % (13.000 mAh útiles)"
+              ],
+              [
+                "Proyección",
+                "≈ 39 min de vuelo máximo"
+              ]
+            ]
+          },
+          {
+            "titulo": "Prueba 3 · Vuelo largo y análisis de descenso",
+            "fecha": "02/07/2024",
+            "datos": [
+              [
+                "Tiempo de vuelo",
+                "17 min"
+              ],
+              [
+                "Consumo",
+                "6.264 mAh (1.566 mAh por batería)"
+              ],
+              [
+                "Voltaje final",
+                "14,4 V"
+              ],
+              [
+                "Análisis",
+                "Altura GPS vs. barómetro en el descenso"
+              ]
+            ]
+          }
+        ],
+        "rendimiento": [
+          [
+            "Vuelo estacionario",
+            "≈ 33 min · 53 % de acelerador"
+          ],
+          [
+            "Uso normal",
+            "≈ 26 min"
+          ],
+          [
+            "A máximo acelerador",
+            "≈ 9 min"
+          ],
+          [
+            "Empuje total",
+            "64 N"
+          ],
+          [
+            "Carga útil remanente",
+            "2,36 kg"
+          ],
+          [
+            "Velocidad máx. de avance",
+            "16,1 m/s (58 km/h)"
+          ],
+          [
+            "Alcance máximo",
+            "≈ 16 km"
+          ],
+          [
+            "Inclinación máxima",
+            "56°"
+          ],
+          [
+            "Eficiencia en estacionario",
+            "60,5 %"
+          ]
+        ],
+        "nota_rendimiento": "Valores calculados para 3 kg de peso al despegue. Según el cálculo, el diseño supera al 60–75 % de los multicópteros comparables en autonomía, carga útil y alcance."
+      }
     },
     {
       "nombre": "Emlid Reach RS2",

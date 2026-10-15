@@ -11,6 +11,8 @@ for m in d['modelos']:
     urls.append((f'{B}viewer.html?m={i}', hoy, '0.6'))
     if m.get('ortofoto'): urls.append((f'{B}mapa.html?m={i}', hoy, '0.5'))
     if m.get('calidad'): urls.append((f'{B}calidad.html?m={i}', hoy, '0.4'))
+for e in d.get('equipos', []):
+    if e.get('pagina') and e.get('id'): urls.append((f'{B}equipo.html?e={e["id"]}', hoy, '0.6'))
 xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 xml += [f'  <url><loc>{u.replace("&", "&amp;")}</loc><lastmod>{f}</lastmod><priority>{p}</priority></url>' for u, f, p in urls]
 xml.append('</urlset>')

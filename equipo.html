@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Equipo</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/e4d-icono.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <meta property="og:image" content="https://e4d.com.ar/assets/brand/e4d-og.png">
+  <meta name="theme-color" content="#0e0f11">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css?v=19">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="e4d · inicio"><img class="brand-logo" src="assets/brand/e4d-header.svg" alt="e4d" width="80" height="34"><img class="brand-mini" src="assets/brand/e4d-marca.svg" alt="e4d" width="34" height="34"></a>
+      <nav class="nav">
+        <a href="./#galeria">Modelos</a>
+        <a href="./#equipos">Equipos</a>
+        <a href="./#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap pj eqp" id="pj">
+    <p class="empty">Cargando…</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="year"></span> <span data-site="autor"></span></span>
+      <span class="mono" style="font-size:12px" id="footer-contact"></span>
+    </div>
+  </footer>
+
+  <script src="assets/app.js?v=19"></script>
+  <script>initEquipo();</script>
+</body>
+</html>

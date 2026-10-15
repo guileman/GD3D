@@ -373,6 +373,7 @@ function renderEquipos(equipos) {
         <h3>${esc(e.nombre)}${e.estado ? ` <span class="eq-badge">${esc(e.estado)}</span>` : ''}</h3>
         ${e.descripcion ? `<p>${esc(e.descripcion)}</p>` : ''}
         ${e.datos?.length ? `<dl>${e.datos.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : ''}
+        ${e.pagina && e.id ? `<a class="btn ghost eq-more" href="equipo.html?e=${encodeURIComponent(e.id)}">Ver desarrollo, pruebas y ficha técnica →</a>` : ''}
       </div>
     </article>`).join('');
   sec.hidden = false;
@@ -456,6 +457,64 @@ function setMeta(desc, url, img) {
   put('meta[property="og:description"]', 'property', 'og:description', desc);
   put('meta[property="og:url"]', 'property', 'og:url', url);
   put('meta[property="og:image"]', 'property', 'og:image', abs);
+}
+
+
+/* ---------------- Página de equipo ---------------- */
+async function initEquipo() {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const root = document.getElementById('pj');
+  const id = new URLSearchParams(location.search).get('e');
+  let data;
+  try { data = await loadData(); } catch (err) { root.innerHTML = '<p class="empty">No se pudo cargar la información.</p>'; return; }
+  applySite(data.sitio);
+  renderContacto(data.sitio?.contacto);
+  const e = (data.equipos || []).find((x) => x.id === id);
+  if (!e || !e.pagina) { root.innerHTML = '<p class="empty">Equipo no encontrado.<br><br><a class="btn" href="./#equipos">Volver</a></p>'; return; }
+  const P = e.pagina;
+  document.title = `${e.nombre} · ${data.sitio?.titulo || ''}`;
+  setMeta(P.intro, `https://e4d.com.ar/equipo.html?e=${encodeURIComponent(e.id)}`, e.fotos?.[0]?.src);
+  const fotos = [...(e.fotos || []), ...(P.galeria || [])];
+  const tabla = (rows) => `<dl class="spec">${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
+  const c = data.sitio?.contacto;
+  root.innerHTML = `
+    <section class="pj-hero">
+      <div>
+        <div class="eyebrow">${esc(e.tipo || 'Equipo')}${e.estado ? ` · <span class="eq-badge">${esc(e.estado)}</span>` : ''}</div>
+        <h1>${esc(e.nombre)}</h1>
+        <p class="pj-intro">${esc(P.intro)}</p>
+        <div class="hero-actions"><a class="btn" href="#ficha">Ficha técnica</a><a class="btn ghost" href="#pruebas">Pruebas de vuelo</a></div>
+      </div>
+      ${fotos[0] ? `<button class="pj-cover eq-ph" data-src="${esc(fotos[0].src)}" data-alt="${esc(fotos[0].alt || '')}"><img src="${esc(fotos[0].src)}" alt="${esc(fotos[0].alt || e.nombre)}"></button>` : ''}
+    </section>
+    ${P.kpis ? `<section class="kpi-strip">${P.kpis.map(([v, k]) => `<div><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join('')}</section>` : ''}
+    ${P.porque ? `<section class="pj-sec"><div class="eyebrow">El proyecto</div><h2>Por qué un drone propio</h2>
+      <div class="pj-grid four">${P.porque.map(([t, x]) => `<article class="pj-card"><h3>${esc(t)}</h3><p>${esc(x)}</p></article>`).join('')}</div></section>` : ''}
+    ${P.rtk ? `<section class="pj-sec"><div class="eyebrow">Posicionamiento</div><h2>RTK a bordo</h2>
+      <p class="pj-lead">${esc(P.rtk.texto)}</p>
+      <ol class="pj-steps">${P.rtk.puntos.map(([t, x]) => `<li><h3>${esc(t)}</h3><p>${esc(x)}</p></li>`).join('')}</ol></section>` : ''}
+    ${P.pruebas ? `<section class="pj-sec" id="pruebas"><div class="eyebrow">Ensayos</div><h2>Pruebas de vuelo</h2>
+      <div class="tests">${P.pruebas.map((t) => `<article class="pj-card test"><div class="mono test-date">${esc(t.fecha || '')}</div><h3>${esc(t.titulo)}</h3>${tabla(t.datos)}</article>`).join('')}</div></section>` : ''}
+    <section class="pj-sec" id="ficha"><div class="eyebrow">Ficha técnica</div><h2>Características y capacidades</h2>
+      <div class="spec-cols">
+        <div class="pj-card"><h3>Componentes</h3>${tabla(e.datos || [])}</div>
+        ${P.rendimiento ? `<div class="pj-card"><h3>Rendimiento calculado</h3>${tabla(P.rendimiento)}${P.nota_rendimiento ? `<p class="spec-note">${esc(P.nota_rendimiento)}</p>` : ''}</div>` : ''}
+      </div></section>
+    ${fotos.length > 1 ? `<section class="pj-sec"><div class="eyebrow">Galería</div><h2>Fotos</h2>
+      <div class="eq-gal">${fotos.map((f) => `<button class="eq-ph" data-src="${esc(f.src)}" data-alt="${esc(f.alt || '')}"><img src="${esc(f.src)}" alt="${esc(f.alt || e.nombre)}" loading="lazy"></button>`).join('')}</div></section>` : ''}
+    <section class="pj-sec pj-cta"><div><h2>¿Te interesa un relevamiento?</h2><p>Escribime y vemos qué equipo conviene para tu trabajo.</p></div>
+      <div class="pj-cta-btns">${contactButtons(c)}</div></section>`;
+  // lightbox reutilizado
+  let lb = document.getElementById('lightbox');
+  if (!lb) {
+    lb = document.createElement('div'); lb.id = 'lightbox'; lb.className = 'lightbox'; lb.hidden = true;
+    lb.innerHTML = '<button class="icon-btn lb-x" aria-label="Cerrar">×</button><img alt=""><p></p>';
+    document.body.appendChild(lb);
+    lb.onclick = (ev) => { if (ev.target !== lb.querySelector('img')) lb.hidden = true; };
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') lb.hidden = true; });
+  }
+  root.querySelectorAll('.eq-ph').forEach((b) => { b.onclick = () => {
+    lb.querySelector('img').src = b.dataset.src; lb.querySelector('p').textContent = b.dataset.alt; lb.hidden = false; }; });
 }
 
 /* ---------------- Página de proyecto ---------------- */
