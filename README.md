@@ -96,6 +96,15 @@ python3 -m http.server 8000
 
 ## Buscadores (SEO)
 
-- `robots.txt` y `sitemap.xml` en la raíz. Al agregar un modelo, regenerá el sitemap con `python3 tools/generar_sitemap.py`.
-- La portada tiene datos estructurados (schema.org `ProfessionalService`) con contacto, zona y servicios.
-- Cada página de proyecto arma su propio título, descripción e imagen para compartir a partir de `practico.intro` y `portada`.
+Cada vez que cambies `models/models.json` (un caso nuevo, un texto, un equipo), corré:
+
+```bash
+python3 tools/prerender.py
+```
+
+Ese script (Python + Playwright + BeautifulSoup):
+- genera `casos/<id>/index.html` y `equipos/<id>/index.html`, con el contenido ya escrito, su título, descripción e imagen para compartir;
+- deja escritas en `index.html` las secciones Casos, Servicios, Equipos y Contacto;
+- regenera `sitemap.xml` con esas direcciones.
+
+Las direcciones viejas (`proyecto.html?m=…`, `equipo.html?e=…`) redirigen solas a las nuevas. El visor, el mapa y la página de calidad llevan `noindex` para que Google indexe las páginas de cada caso. `404.html` es la página de error.

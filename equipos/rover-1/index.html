@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"/><base href="../../"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Rover 1 · Cuadricóptero de mapeo · e4d</title>
+<link href="assets/brand/e4d-icono.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/brand/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/brand/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="https://e4d.com.ar/assets/equipos/cuadricoptero-vuelo.jpg" property="og:image"/>
+<meta content="#0e0f11" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="assets/styles.css?v=22" rel="stylesheet"/>
+<meta content="Un cuadricóptero de mapeo armado y configurado desde cero: chasis de fibra de carbono, piloto automático abierto ArduPilot y GPS RTK a bordo. La idea es tener una plataforma propia, con más autonomía que un drone comercial y la posición de cada foto medida al centímetro." name="description"/><link href="https://e4d.com.ar/equipos/rover-1/" rel="canonical"/><meta content="Rover 1 · Cuadricóptero de mapeo · e4d" property="og:title"/><meta content="Un cuadricóptero de mapeo armado y configurado desde cero: chasis de fibra de carbono, piloto automático abierto ArduPilot y GPS RTK a bordo. La idea es tener una plataforma propia, con más autonomía que un drone comercial y la posición de cada foto medida al centímetro." property="og:description"/><meta content="https://e4d.com.ar/equipos/rover-1/" property="og:url"/></head>
+<body data-id="rover-1">
+<header class="site-header">
+<div class="wrap">
+<a aria-label="e4d · inicio" class="brand" href="./"><img alt="e4d" class="brand-logo" height="34" src="assets/brand/e4d-header.svg" width="80"/><img alt="e4d" class="brand-mini" height="34" src="assets/brand/e4d-marca.svg" width="34"/></a>
+<nav class="nav">
+<a href="./#galeria">Casos</a>
+<a href="./#equipos">Equipos</a>
+<a href="./#contacto">Contacto</a>
+</nav>
+</div>
+</header>
+<main class="wrap pj eqp" id="pj">
+<section class="pj-hero">
+<div>
+<div class="eyebrow">Drone de desarrollo propio · <span class="eq-badge">En desarrollo</span></div>
+<h1>Rover 1 · Cuadricóptero de mapeo</h1>
+<p class="pj-intro">Un cuadricóptero de mapeo armado y configurado desde cero: chasis de fibra de carbono, piloto automático abierto ArduPilot y GPS RTK a bordo. La idea es tener una plataforma propia, con más autonomía que un drone comercial y la posición de cada foto medida al centímetro.</p>
+<div class="hero-actions"><a class="btn" href="#ficha">Ficha técnica</a><a class="btn ghost" href="#pruebas">Pruebas de vuelo</a></div>
+</div>
+<button class="pj-cover eq-ph" data-alt="Rover 1 en vuelo" data-src="assets/equipos/cuadricoptero-vuelo.jpg"><img alt="Rover 1 en vuelo" src="assets/equipos/cuadricoptero-vuelo.jpg"/></button>
+</section>
+<section class="kpi-strip"><div><b>≈ 35 min</b><span>Autonomía proyectada</span></div><div><b>3 kg</b><span>Peso al despegue</span></div><div><b>2,3 kg</b><span>Carga útil disponible</span></div><div><b>58 km/h</b><span>Velocidad máxima</span></div><div><b>≤ 10 cm</b><span>Diferencia RTK vs. RS2</span></div></section>
+<section class="pj-sec"><div class="eyebrow">El proyecto</div><h2>Por qué un drone propio</h2>
+<div class="pj-grid four"><article class="pj-card"><h3>Posición de cada foto al centímetro</h3><p>Con RTK a bordo, cada disparo queda georreferenciado con precisión centimétrica. Eso reduce la cantidad de puntos de control a medir en el terreno y acelera el trabajo de campo.</p></article><article class="pj-card"><h3>Más tiempo en el aire</h3><p>Motores de bajo kV con hélices de 15" y baterías 4S de alta capacidad: el objetivo es superar los 30 minutos de vuelo útil, el doble que un drone comercial chico, para cubrir más superficie en una sola batería.</p></article><article class="pj-card"><h3>Cámara de sensor grande</h3><p>Al no depender de una cámara integrada, lleva una Sony A6000 de sensor APS-C y 24 MP, más grande que la de los drones comerciales chicos, y se puede cambiar según el trabajo.</p></article><article class="pj-card"><h3>Plataforma abierta</h3><p>ArduPilot permite planificar misiones, ajustar cada parámetro de vuelo y de seguridad, y registrar todo para analizar cada vuelo.</p></article></div></section>
+<section class="pj-sec"><div class="eyebrow">Posicionamiento</div><h2>RTK a bordo</h2>
+<p class="pj-lead">El sistema RTK está integrado en el propio drone: un receptor simpleRTK2B Lite con antena multibanda recibe las correcciones de una base RTK propia instalada en el lugar del vuelo. Para que la posición sea válida para fotogrametría se trabajó en tres puntos:</p>
+<ol class="pj-steps"><li><h3>Compensación de la antena</h3><p>En ArduPilot se cargó la posición física del GPS respecto del centro de la IMU (parámetros GPS_POS_X/Y/Z), para que la coordenada corresponda al centro del drone y no a la antena.</p></li><li><h3>Disparo sincronizado</h3><p>La cámara se dispara por cable desde la controladora, así cada foto queda registrada en el log con la posición RTK del instante exacto del disparo.</p></li><li><h3>Validación de alturas</h3><p>En los vuelos de prueba se comparó la altura del GPS con la del barómetro para verificar el comportamiento vertical del sistema. Por ejemplo, en un descenso se registraron 7,7 m en 11,4 s según el GPS.</p></li></ol>
+<div class="rtk-test">
+<div class="rtk-txt"><div class="eyebrow">Ensayo</div><h3>Prueba de precisión: drone vs. receptor Emlid RS2</h3><p>Para comprobar la posición que entrega el RTK del drone, se apoyó el Rover 1 sobre tres puntos del terreno y se registraron sus coordenadas. Después se midieron los mismos tres puntos con un receptor GNSS Emlid Reach RS2 en modo RTK, que se toma como referencia, y se compararon ambas posiciones en QGIS con cálculo elipsoidal (WGS 84).</p>
+<table class="rtk-res"><thead><tr><th>Punto</th><th>Diferencia</th><th></th></tr></thead><tbody><tr><td>Punto 1</td><td><b>Coincidente</b></td><td>drone y RS2 superpuestos a la escala del plano</td></tr><tr><td>Punto 2</td><td><b>Coincidente</b></td><td>drone y RS2 superpuestos a la escala del plano</td></tr><tr><td>Punto 3</td><td><b>10 cm</b></td><td>diferencia horizontal medida entre ambas posiciones</td></tr></tbody></table>
+<p class="rtk-concl">Las posiciones del drone quedaron dentro de los 10 cm respecto del receptor geodésico, con los puntos separados entre sí unos 5,7 m. Es el orden de precisión que se busca para georreferenciar fotos sin depender de muchos puntos de control. El siguiente paso es repetir la prueba en vuelo y con más puntos.</p></div>
+<div class="rtk-imgs"><figure><button class="eq-ph" data-alt="Los tres puntos de control: posición del drone (UAV) y del receptor Emlid RS2; distancia entre los puntos 1 y 3 de 5,66 m" data-src="assets/equipos/rtk-control-3-puntos.jpg"><img alt="Los tres puntos de control: posición del drone (UAV) y del receptor Emlid RS2; distancia entre los puntos 1 y 3 de 5,66 m" loading="lazy" src="assets/equipos/rtk-control-3-puntos.jpg"/></button><figcaption>Los tres puntos de control: posición del drone (UAV) y del receptor Emlid RS2; distancia entre los puntos 1 y 3 de 5,66 m</figcaption></figure><figure><button class="eq-ph" data-alt="Detalle del punto 3: diferencia de 0,100 m entre la posición del drone y la del RS2" data-src="assets/equipos/rtk-control-punto-3.jpg"><img alt="Detalle del punto 3: diferencia de 0,100 m entre la posición del drone y la del RS2" loading="lazy" src="assets/equipos/rtk-control-punto-3.jpg"/></button><figcaption>Detalle del punto 3: diferencia de 0,100 m entre la posición del drone y la del RS2</figcaption></figure></div>
+</div></section>
+<section class="pj-sec" id="pruebas"><div class="eyebrow">Ensayos</div><h2>Pruebas de vuelo</h2>
+<div class="tests"><article class="pj-card test"><div class="mono test-date"></div><h3>Prueba 1 · Autonomía</h3><dl class="spec"><dt>Peso</dt><dd>3 kg</dd><dt>Tiempo de vuelo</dt><dd>15 min 31 s</dd><dt>Consumo</dt><dd>6.469 mAh</dd><dt>Proyección</dt><dd>≈ 36 min totales · 22 min con 20 % de reserva</dd></dl></article><article class="pj-card test"><div class="mono test-date">05/05/2024</div><h3>Prueba 2 · Vuelo en campo</h3><dl class="spec"><dt>Tiempo de vuelo</dt><dd>16 min</dd><dt>Consumo</dt><dd>5.325 mAh</dd><dt>Reserva de seguridad</dt><dd>20 % (13.000 mAh útiles)</dd><dt>Proyección</dt><dd>≈ 39 min de vuelo máximo</dd></dl><button class="eq-ph test-img" data-alt="Prueba 2: tensión de la batería durante el vuelo, de 16,6 V a 14,75 V en 15 minutos" data-src="assets/equipos/prueba2-voltaje.jpg"><img alt="Prueba 2: tensión de la batería durante el vuelo, de 16,6 V a 14,75 V en 15 minutos" loading="lazy" src="assets/equipos/prueba2-voltaje.jpg"/></button></article><article class="pj-card test"><div class="mono test-date">02/07/2024</div><h3>Prueba 3 · Vuelo largo y análisis de descenso</h3><dl class="spec"><dt>Tiempo de vuelo</dt><dd>17 min</dd><dt>Consumo</dt><dd>6.264 mAh (1.566 mAh por batería)</dd><dt>Voltaje final</dt><dd>14,4 V</dd><dt>Análisis</dt><dd>Altura GPS vs. barómetro en el descenso</dd></dl></article></div></section>
+<section class="pj-sec" id="ficha"><div class="eyebrow">Ficha técnica</div><h2>Características y capacidades</h2>
+<div class="spec-cols">
+<div class="pj-card"><h3>Componentes</h3><dl class="spec"><dt>Chasis</dt><dd>Tarot 650 · fibra de carbono</dd><dt>Motores</dt><dd>Gartt 4108 · 620 kV</dd><dt>Variadores</dt><dd>Hobbywing XRotor Pro 40 A</dd><dt>Hélices</dt><dd>15 × 5,5" nylon con fibra de carbono</dd><dt>Controladora</dt><dd>CUAV V5 Nano · ArduPilot</dd><dt>Posicionamiento</dt><dd>GPS RTK a bordo (simpleRTK2B Lite)</dd><dt>Corrección</dt><dd>Base RTK propia</dd><dt>Radio y video</dt><dd>Skydroid H16</dd><dt>Batería</dt><dd>Li-ion 4S5P (celdas 18650) · ≈ 15.000 mAh</dd><dt>Peso al despegue</dt><dd>≈ 3 kg</dd><dt>Autonomía</dt><dd>≈ 35 min estimada (pruebas de 16–17 min)</dd><dt>Cámara</dt><dd>Sony A6000 · APS-C 24 MP</dd></dl></div>
+<div class="pj-card"><h3>Rendimiento calculado</h3><dl class="spec"><dt>Vuelo estacionario</dt><dd>≈ 33 min · 53 % de acelerador</dd><dt>Uso normal</dt><dd>≈ 26 min</dd><dt>A máximo acelerador</dt><dd>≈ 9 min</dd><dt>Empuje total</dt><dd>64 N</dd><dt>Carga útil remanente</dt><dd>2,36 kg</dd><dt>Velocidad máx. de avance</dt><dd>16,1 m/s (58 km/h)</dd><dt>Alcance máximo</dt><dd>≈ 16 km</dd><dt>Inclinación máxima</dt><dd>56°</dd><dt>Eficiencia en estacionario</dt><dd>60,5 %</dd></dl><p class="spec-note">Valores calculados para 3 kg de peso al despegue. Según el cálculo, el diseño supera al 60–75 % de los multicópteros comparables en autonomía, carga útil y alcance.</p></div>
+</div></section>
+<section class="pj-sec"><div class="eyebrow">Galería</div><h2>Fotos</h2>
+<div class="eq-gal"><button class="eq-ph" data-alt="Rover 1 en vuelo" data-src="assets/equipos/cuadricoptero-vuelo.jpg"><img alt="Rover 1 en vuelo" loading="lazy" src="assets/equipos/cuadricoptero-vuelo.jpg"/></button><button class="eq-ph" data-alt="Rover 1 sobre su estuche con la cámara Sony A6000" data-src="assets/equipos/cuadricoptero-estuche.jpg"><img alt="Rover 1 sobre su estuche con la cámara Sony A6000" loading="lazy" src="assets/equipos/cuadricoptero-estuche.jpg"/></button><button class="eq-ph" data-alt="Rover 1 sobre su estuche, con antena RTK y cámara Sony A6000" data-src="assets/equipos/rover1-frente.jpg"><img alt="Rover 1 sobre su estuche, con antena RTK y cámara Sony A6000" loading="lazy" src="assets/equipos/rover1-frente.jpg"/></button><button class="eq-ph" data-alt="Rover 1 en vuelo al atardecer" data-src="assets/equipos/rover1-luna.jpg"><img alt="Rover 1 en vuelo al atardecer" loading="lazy" src="assets/equipos/rover1-luna.jpg"/></button><button class="eq-ph" data-alt="Prueba RTK: posición del drone vs. Emlid RS2 en tres puntos" data-src="assets/equipos/rtk-control-3-puntos.jpg"><img alt="Prueba RTK: posición del drone vs. Emlid RS2 en tres puntos" loading="lazy" src="assets/equipos/rtk-control-3-puntos.jpg"/></button></div></section>
+<section class="pj-sec pj-cta"><div><h2>¿Te interesa un relevamiento?</h2><p>Escribime y vemos qué equipo conviene para tu trabajo.</p></div>
+<div class="pj-cta-btns">
+<a class="btn wa" href="https://wa.me/5493416904961?text=Hola%20Guillermo%2C%20vi%20tus%20relevamientos%20en%20la%20web%20y%20quer%C3%ADa%20consultarte%20por%20un%20trabajo." rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"></path></svg> WhatsApp 341 690-4961</a>
+<a class="btn ghost" href="mailto:guileman.diaz@gmail.com?subject=Consulta%20por%20relevamiento"><svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="m3 7 9 6 9-6"></path></svg> guileman.diaz@gmail.com</a></div></section></main>
+<footer class="site-footer">
+<div class="wrap">
+<span>© <span id="year">2026</span> <span data-site="autor">Guillermo Díaz</span></span>
+<span class="mono" id="footer-contact" style="font-size:12px">Tel./WhatsApp 341 690-4961 · <a href="mailto:guileman.diaz@gmail.com">guileman.diaz@gmail.com</a></span>
+</div>
+</footer>
+<script src="assets/app.js?v=22"></script>
+<script>initEquipo();</script>
+</body></html>

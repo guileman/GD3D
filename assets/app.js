@@ -115,7 +115,7 @@ async function initGallery() {
     }
     grid.innerHTML = lista.map((m) => `
       <article class="card">
-        <a class="card-link" href="${m.practico ? 'proyecto.html' : 'viewer.html'}?m=${encodeURIComponent(m.id)}">
+        <a class="card-link" href="${m.practico ? urlCaso(m.id) : `viewer.html?m=${encodeURIComponent(m.id)}`}">
           <div class="thumb">
             ${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy">` : PLACEHOLDER}
             <span class="badge">3D</span>
@@ -134,7 +134,7 @@ async function initGallery() {
           </div>
         </a>
         <div class="card-actions">
-          ${m.practico ? `<a class="chip primary" href="proyecto.html?m=${encodeURIComponent(m.id)}">Ver proyecto</a>` : ''}
+          ${m.practico ? `<a class="chip primary" href="${urlCaso(m.id)}">Ver proyecto</a>` : ''}
           <a class="chip${m.practico ? '' : ' primary'}" href="viewer.html?m=${encodeURIComponent(m.id)}">Ver en 3D</a>
           ${m.ortofoto ? `<a class="chip" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto y mediciones</a>` : ''}
           ${m.calidad ? `<a class="chip" href="calidad.html?m=${encodeURIComponent(m.id)}">Resumen de calidad</a>` : ''}
@@ -187,7 +187,7 @@ async function initViewer() {
     const kp = (m.calidad?.indicadores || []).slice(0, 4);
     q.innerHTML = `
       ${kp.length ? `<div class="p-kpis">${kp.map((k) => `<div><b>${esc(k.valor)}</b><span>${esc(k.label)}</span></div>`).join('')}</div>` : ''}
-      ${m.practico ? `<a class="btn" href="proyecto.html?m=${encodeURIComponent(m.id)}">Para qué sirve</a>` : ''}
+      ${m.practico ? `<a class="btn" href="${urlCaso(m.id)}">Para qué sirve</a>` : ''}
       ${m.calidad ? `<a class="btn ghost" href="calidad.html?m=${encodeURIComponent(m.id)}">Calidad</a>` : ''}
       ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${encodeURIComponent(m.id)}">Ortofoto</a>` : ''}
       ${m.reporte ? `<a class="btn ghost" href="${esc(m.reporte)}" target="_blank" rel="noopener">PDF</a>` : ''}`;
@@ -375,7 +375,7 @@ function renderEquipos(equipos) {
         <h3>${esc(e.nombre)}${e.estado ? ` <span class="eq-badge">${esc(e.estado)}</span>` : ''}</h3>
         ${e.descripcion ? `<p>${esc(e.descripcion)}</p>` : ''}
         ${e.datos?.length ? `<dl>${e.datos.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : ''}
-        ${e.pagina && e.id ? `<a class="btn ghost eq-more" href="equipo.html?e=${encodeURIComponent(e.id)}">Ver desarrollo, pruebas y ficha técnica →</a>` : ''}
+        ${e.pagina && e.id ? `<a class="btn ghost eq-more" href="${urlEquipo(e.id)}">Ver desarrollo, pruebas y ficha técnica →</a>` : ''}
       </div>
     </article>`).join('');
   sec.hidden = false;
@@ -464,15 +464,20 @@ function setMeta(desc, url, img) {
 
 function equipoLink(m) {
   const q = m.equipo; if (!q) return '';
-  const href = q.id === 'rover-1' ? `equipo.html?e=${encodeURIComponent(q.id)}` : './#equipos';
+  const href = q.id === 'rover-1' ? urlEquipo(q.id) : './#equipos';
   return `<a href="${href}">${esc(q.nombre)}</a>`;
 }
+
+const urlCaso = (id) => `casos/${encodeURIComponent(id)}/`;
+const urlEquipo = (id) => `equipos/${encodeURIComponent(id)}/`;
 
 /* ---------------- Página de equipo ---------------- */
 async function initEquipo() {
   document.getElementById('year').textContent = new Date().getFullYear();
   const root = document.getElementById('pj');
-  const id = new URLSearchParams(location.search).get('e');
+  const qs = new URLSearchParams(location.search);
+  const id = document.body.dataset.id || qs.get('e');
+  if (!document.body.dataset.id && id && !qs.has('prerender')) { location.replace(urlEquipo(id)); return; }
   let data;
   try { data = await loadData(); } catch (err) { root.innerHTML = '<p class="empty">No se pudo cargar la información.</p>'; return; }
   applySite(data.sitio);
@@ -481,7 +486,7 @@ async function initEquipo() {
   if (!e || !e.pagina) { root.innerHTML = '<p class="empty">Equipo no encontrado.<br><br><a class="btn" href="./#equipos">Volver</a></p>'; return; }
   const P = e.pagina;
   document.title = `${e.nombre} · ${data.sitio?.titulo || ''}`;
-  setMeta(P.intro, `https://e4d.com.ar/equipo.html?e=${encodeURIComponent(e.id)}`, e.fotos?.[0]?.src);
+  setMeta(P.intro, `https://e4d.com.ar/${urlEquipo(e.id)}`, e.fotos?.[0]?.src);
   const fotos = [...(e.fotos || []), ...(P.galeria || [])];
   const tabla = (rows) => `<dl class="spec">${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
   const c = data.sitio?.contacto;
@@ -535,7 +540,9 @@ async function initEquipo() {
 async function initProyecto() {
   document.getElementById('year').textContent = new Date().getFullYear();
   const root = document.getElementById('pj');
-  const id = new URLSearchParams(location.search).get('m');
+  const qs = new URLSearchParams(location.search);
+  const id = document.body.dataset.id || qs.get('m');
+  if (!document.body.dataset.id && id && !qs.has('prerender')) { location.replace(urlCaso(id)); return; }
   let data;
   try { data = await loadData(); } catch (e) { root.innerHTML = '<p class="empty">No se pudo cargar la información.</p>'; return; }
   applySite(data.sitio);
@@ -545,7 +552,7 @@ async function initProyecto() {
   if (!m) { root.innerHTML = '<p class="empty">Proyecto no encontrado.<br><br><a class="btn" href="./#galeria">Volver a la galería</a></p>'; return; }
   document.title = `${m.titulo} · ${data.sitio?.titulo || ''} · relevamiento con drone`;
   const P = m.practico || {};
-  setMeta(P.intro || m.descripcion || '', `https://e4d.com.ar/proyecto.html?m=${encodeURIComponent(m.id)}`, m.portada);
+  setMeta(P.intro || m.descripcion || '', `https://e4d.com.ar/${urlCaso(m.id)}`, m.portada);
   const enc = encodeURIComponent(m.id);
   const card = (x) => `<article class="pj-card"><h3>${esc(x.titulo)}</h3><p>${esc(x.texto)}</p></article>`;
   root.innerHTML = `

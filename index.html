@@ -1,141 +1,231 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>e4d · Relevamientos con drone y fotogrametría | Modelos 3D, ortofotos y volúmenes</title>
-  <meta name="description" content="Relevamientos con drone y fotogrametría en Rosario y la región: modelos 3D, ortofotos medibles, cómputo de volúmenes de acopios y estado edilicio. Guillermo Díaz.">
-  <link rel="canonical" href="https://e4d.com.ar/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_AR">
-  <meta property="og:site_name" content="e4d">
-  <meta property="og:title" content="e4d · Relevamientos con drone y fotogrametría">
-  <meta property="og:description" content="Relevamientos con drone y fotogrametría en Rosario y la región: modelos 3D, ortofotos medibles, cómputo de volúmenes de acopios y estado edilicio. Guillermo Díaz.">
-  <meta property="og:url" content="https://e4d.com.ar/">
-  <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://e4d.com.ar/#negocio", "name": "e4d · Relevamientos por fotogrametría", "url": "https://e4d.com.ar/", "logo": "https://e4d.com.ar/assets/brand/e4d-icono-512.png", "image": "https://e4d.com.ar/assets/brand/e4d-og.png", "description": "Relevamientos con drone y fotogrametría en Rosario y la región: modelos 3D, ortofotos medibles, cómputo de volúmenes de acopios y estado edilicio. Guillermo Díaz.", "telephone": "+54 9 341 690-4961", "email": "guileman.diaz@gmail.com", "founder": {"@type": "Person", "name": "Guillermo Díaz"}, "address": {"@type": "PostalAddress", "addressLocality": "Rosario", "addressRegion": "Santa Fe", "addressCountry": "AR"}, "areaServed": [{"@type": "State", "name": "Santa Fe"}, {"@type": "State", "name": "Buenos Aires"}, {"@type": "State", "name": "Entre Ríos"}, {"@type": "State", "name": "Córdoba"}], "knowsAbout": ["fotogrametría", "relevamiento con drone", "ortofoto", "modelo 3D", "cómputo de volúmenes", "puntos de control GNSS RTK", "estado edilicio", "avance de obra"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Servicios", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cómputo de volúmenes", "description": "Acopios de áridos, escombros, tierra o cereal: cuántos m³ hay, cuántos camiones hacen falta para moverlos y cuánto se retiró entre una medición y otra."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Estado edilicio", "description": "Registro con fecha del estado de un predio y sus construcciones: superficies, techos y cerramientos, para tasaciones, compraventas, seguros o antes de una obra."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Avance de obra", "description": "Vuelos periódicos sobre la misma obra para comparar etapas, controlar certificaciones y tener un historial visual de lo hecho."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ortofotos y planos base", "description": "Fotos aéreas medibles y georreferenciadas que arquitectos, agrimensores e ingenieros pueden usar directamente como base de proyecto."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Puntos de control GNSS", "description": "Medición en campo con receptores GNSS de precisión para que los modelos queden en coordenadas reales y las medidas sean confiables."}}]}, "sameAs": ["https://wa.me/5493416904961"]}, {"@type": "WebSite", "@id": "https://e4d.com.ar/#web", "url": "https://e4d.com.ar/", "name": "e4d", "inLanguage": "es-AR", "publisher": {"@id": "https://e4d.com.ar/#negocio"}}]}</script>
-  <link rel="icon" type="image/svg+xml" href="assets/brand/e4d-icono.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
-  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-  <meta property="og:image" content="https://e4d.com.ar/assets/brand/e4d-og.png">
-  <meta name="theme-color" content="#0e0f11">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=21">
-  <script>self.ModelViewerElement = { dracoDecoderLocation: new URL("assets/vendor/draco/", location.href).href };</script>
-  <script type="module" src="assets/vendor/model-viewer.min.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>e4d · Relevamientos con drone y fotogrametría | Modelos 3D, ortofotos y volúmenes</title>
+<meta content="Relevamientos con drone y fotogrametría en Rosario y la región: modelos 3D, ortofotos medibles, cómputo de volúmenes de acopios y estado edilicio. Guillermo Díaz." name="description"/>
+<link href="https://e4d.com.ar/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="es_AR" property="og:locale"/>
+<meta content="e4d" property="og:site_name"/>
+<meta content="e4d · Relevamientos con drone y fotogrametría" property="og:title"/>
+<meta content="Relevamientos con drone y fotogrametría en Rosario y la región: modelos 3D, ortofotos medibles, cómputo de volúmenes de acopios y estado edilicio. Guillermo Díaz." property="og:description"/>
+<meta content="https://e4d.com.ar/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://e4d.com.ar/#negocio", "name": "e4d · Relevamientos por fotogrametría", "url": "https://e4d.com.ar/", "logo": "https://e4d.com.ar/assets/brand/e4d-icono-512.png", "image": "https://e4d.com.ar/assets/brand/e4d-og.png", "description": "Relevamientos con drone y fotogrametría en Rosario y la región: modelos 3D, ortofotos medibles, cómputo de volúmenes de acopios y estado edilicio. Guillermo Díaz.", "telephone": "+54 9 341 690-4961", "email": "guileman.diaz@gmail.com", "founder": {"@type": "Person", "name": "Guillermo Díaz"}, "address": {"@type": "PostalAddress", "addressLocality": "Rosario", "addressRegion": "Santa Fe", "addressCountry": "AR"}, "areaServed": [{"@type": "State", "name": "Santa Fe"}, {"@type": "State", "name": "Buenos Aires"}, {"@type": "State", "name": "Entre Ríos"}, {"@type": "State", "name": "Córdoba"}], "knowsAbout": ["fotogrametría", "relevamiento con drone", "ortofoto", "modelo 3D", "cómputo de volúmenes", "puntos de control GNSS RTK", "estado edilicio", "avance de obra"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Servicios", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cómputo de volúmenes", "description": "Acopios de áridos, escombros, tierra o cereal: cuántos m³ hay, cuántos camiones hacen falta para moverlos y cuánto se retiró entre una medición y otra."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Estado edilicio", "description": "Registro con fecha del estado de un predio y sus construcciones: superficies, techos y cerramientos, para tasaciones, compraventas, seguros o antes de una obra."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Avance de obra", "description": "Vuelos periódicos sobre la misma obra para comparar etapas, controlar certificaciones y tener un historial visual de lo hecho."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ortofotos y planos base", "description": "Fotos aéreas medibles y georreferenciadas que arquitectos, agrimensores e ingenieros pueden usar directamente como base de proyecto."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Puntos de control GNSS", "description": "Medición en campo con receptores GNSS de precisión para que los modelos queden en coordenadas reales y las medidas sean confiables."}}]}, "sameAs": ["https://wa.me/5493416904961"]}, {"@type": "WebSite", "@id": "https://e4d.com.ar/#web", "url": "https://e4d.com.ar/", "name": "e4d", "inLanguage": "es-AR", "publisher": {"@id": "https://e4d.com.ar/#negocio"}}]}</script>
+<link href="assets/brand/e4d-icono.svg" rel="icon" type="image/svg+xml"/>
+<link href="assets/brand/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/brand/apple-touch-icon.png" rel="apple-touch-icon"/>
+<meta content="https://e4d.com.ar/assets/brand/e4d-og.png" property="og:image"/>
+<meta content="#0e0f11" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="assets/styles.css?v=22" rel="stylesheet"/>
+<script>self.ModelViewerElement = { dracoDecoderLocation: new URL("assets/vendor/draco/", location.href).href };</script>
+<script src="assets/vendor/model-viewer.min.js" type="module"></script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <a class="brand" href="./" aria-label="e4d · inicio"><img class="brand-logo" src="assets/brand/e4d-header.svg" alt="e4d" width="80" height="34"><img class="brand-mini" src="assets/brand/e4d-marca.svg" alt="e4d" width="34" height="34"></a>
-      <nav class="nav">
-        <a href="#galeria">Casos</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#equipos">Equipos</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow" data-site="subtitulo">Relevamientos por fotogrametría</div>
-          <h1>Explorá espacios reales <em>desde la comodidad de tu escritorio.</em></h1>
-          <p class="lead" data-site="bienvenida"></p>
-          <div class="hero-actions">
-            <a class="btn" href="#galeria">Ver casos
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-            </a>
-            <a class="btn ghost" id="hero-open" href="#">Abrir el último</a>
-            <a class="btn ghost" id="hero-report" href="#" hidden>Reporte de calidad</a>
-          </div>
-          <div class="stats">
-            <div><b id="stat-count">–</b><span>Casos</span></div>
-            <div><b id="stat-photos">–</b><span>Fotos procesadas</span></div>
-            <div><b id="stat-last">–</b><span>Última carga</span></div>
-          </div>
-        </div>
-        <div class="hero-viewer">
-          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          <model-viewer id="hero-model" camera-controls auto-rotate rotation-per-second="18deg"
-            interaction-prompt="none" shadow-intensity="1" exposure="1" disable-zoom
-            alt="Vista previa del último modelo"></model-viewer>
-          <span class="tag" id="hero-tag"></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="galeria">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Galería</div>
-            <h2>Casos reales</h2>
-          </div>
-          <input class="search" id="search" type="search" placeholder="Buscar por nombre, lugar o etiqueta…" aria-label="Buscar modelos">
-        </div>
-        <div class="grid" id="grid"></div>
-      </div>
-    </section>
-
-    <section class="section sv-section" id="servicios" hidden>
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Servicios</div>
-            <h2>Para qué se usa</h2>
-          </div>
-        </div>
-        <div class="sv-grid" id="sv-grid"></div>
-      </div>
-    </section>
-
-    <section class="section eq-section" id="equipos" hidden>
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Equipos</div>
-            <h2>Con qué trabajamos</h2>
-          </div>
-        </div>
-        <div class="eq-grid" id="eq-grid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="acerca" style="padding-top:0">
-      <div class="wrap" style="max-width:760px">
-        <div class="eyebrow">Acerca</div>
-        <h2 style="font-size:28px;letter-spacing:-.02em;margin:6px 0 12px">Cómo se hacen estos modelos</h2>
-        <p style="color:var(--muted)">Cada modelo se reconstruye a partir de decenas o cientos de fotografías tomadas alrededor del objeto. El software de fotogrametría detecta puntos en común entre las fotos, calcula su posición en el espacio y genera una malla con textura real. Podés girarlos con el mouse o con el dedo, acercarte con la rueda o pellizcando, y en celulares compatibles verlos en realidad aumentada.</p>
-      </div>
-    </section>
-    <section class="section ct-section" id="contacto" hidden>
-      <div class="wrap">
-        <div class="ct-box">
-          <div>
-            <div class="eyebrow">Contacto</div>
-            <h2>¿Tenés un predio, una obra o un acopio para relevar?</h2>
-            <p>Escribime por WhatsApp o por mail y vemos qué necesitás. <b id="ct-nombre"></b></p>
-          </div>
-          <div class="ct-btns" id="ct-btns"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <span>© <span id="year"></span> <span data-site="autor"></span></span>
-      <span class="mono" style="font-size:12px" id="footer-contact"></span>
-    </div>
-  </footer>
-
-  <script src="assets/app.js?v=21"></script>
-  <script>initGallery();</script>
+<header class="site-header">
+<div class="wrap">
+<a aria-label="e4d · inicio" class="brand" href="./"><img alt="e4d" class="brand-logo" height="34" src="assets/brand/e4d-header.svg" width="80"/><img alt="e4d" class="brand-mini" height="34" src="assets/brand/e4d-marca.svg" width="34"/></a>
+<nav class="nav">
+<a href="#galeria">Casos</a>
+<a href="#servicios">Servicios</a>
+<a href="#equipos">Equipos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow" data-site="subtitulo">Relevamientos por fotogrametría</div>
+<h1>Explorá espacios reales <em>desde la comodidad de tu escritorio.</em></h1>
+<p class="lead" data-site="bienvenida">Edificios y espacios reconstruidos a partir de fotografías. Elegí un modelo y recorrelo en 3D: girá, acercate y miralo desde cualquier ángulo. Sobre la foto aérea podés medir distancias, superficies y ángulos con un clic.</p>
+<div class="hero-actions">
+<a class="btn" href="#galeria">Ver casos
+              <svg fill="none" height="16" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
+</a>
+<a class="btn ghost" href="#" id="hero-open">Abrir el último</a>
+<a class="btn ghost" hidden="" href="#" id="hero-report">Reporte de calidad</a>
+</div>
+<div class="stats">
+<div><b id="stat-count">2</b><span>Casos</span></div>
+<div><b id="stat-photos">537</b><span>Fotos procesadas</span></div>
+<div><b id="stat-last">10 sept 2026</b><span>Última carga</span></div>
+</div>
+</div>
+<div class="hero-viewer">
+<span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+<model-viewer alt="Vista previa del último modelo" auto-rotate="" camera-controls="" disable-zoom="" exposure="1" id="hero-model" interaction-prompt="none" rotation-per-second="18deg" shadow-intensity="1"></model-viewer>
+<span class="tag" id="hero-tag"></span>
+</div>
+</div>
+</section>
+<section class="section" id="galeria">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Galería</div>
+<h2>Casos reales</h2>
+</div>
+<input aria-label="Buscar modelos" class="search" id="search" placeholder="Buscar por nombre, lugar o etiqueta…" type="search"/>
+</div>
+<div class="grid" id="grid">
+<article class="card">
+<a class="card-link" href="casos/frigorifico-rn11/">
+<div class="thumb">
+<img alt="" loading="lazy" src="models/frigorifico-rn11/portada.jpg"/>
+<span class="badge">3D</span>
+</div>
+<div class="card-body">
+<h3>Frigorífico — Ruta Nacional 11</h3>
+<p title="Relevamiento fotogramétrico aéreo con apoyo terrestre GNSS (8 puntos de control) para documentar el estado actual de las construcciones del predio. Registra la implantación de las edificaciones, sus superficies cubiertas y semicubiertas, el estado de cubiertas, cerramientos y elementos estructurales visibles, y las áreas libres y de circulación, como base para el relevamiento de mejoras existentes. Productos: modelo 3D texturizado y ortofotomosaico georreferenciado en UTM 20S (WGS 84).">Relevamiento fotogramétrico aéreo con apoyo terrestre GNSS (8 puntos de control) para documentar el estado actual de las construcciones del predio. Registra la implantación de las edificaciones, sus superficies cubiertas y semicubiertas, el estado de cubiertas, cerramientos y elementos estructurales visibles, y las áreas libres y de circulación, como base para el relevamiento de mejoras existentes. Productos: modelo 3D texturizado y ortofotomosaico georreferenciado en UTM 20S (WGS 84).</p>
+<div class="tags"><span>frigorífico</span><span>drone</span><span>edificio</span><span>estado edilicio</span></div>
+<div class="meta">
+<span>Ruta Nacional 11 · Juan de Garay</span>
+<span>10 de sept de 2026</span>
+<span>491 fotos</span>
+<span>DJI Phantom 4 Pro</span>
+</div>
+</div>
+</a>
+<div class="card-actions">
+<a class="chip primary" href="casos/frigorifico-rn11/">Ver proyecto</a>
+<a class="chip" href="viewer.html?m=frigorifico-rn11">Ver en 3D</a>
+<a class="chip" href="mapa.html?m=frigorifico-rn11">Ortofoto y mediciones</a>
+<a class="chip" href="calidad.html?m=frigorifico-rn11">Resumen de calidad</a>
+<a class="chip" href="models/frigorifico-rn11/reporte-calidad.pdf" rel="noopener" target="_blank">Reporte PDF ↓</a>
+</div>
+</article>
+<article class="card">
+<a class="card-link" href="casos/escombros-loma-verde/">
+<div class="thumb">
+<img alt="" loading="lazy" src="models/escombros-loma-verde/portada.jpg"/>
+<span class="badge">3D</span>
+</div>
+<div class="card-body">
+<h3>Escombros — Loma Verde</h3>
+<div class="card-res"><b>936 m³</b> volumen de escombros</div>
+<p title="Relevamiento fotogramétrico de un acopio de escombros orientado a determinar su volumen. Sobre el modelo digital de superficie se cubicó el material por diferencia respecto de una superficie de base triangulada desde el contorno del acopio: 935,76 m³ en 941,47 m². Productos: modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.">Relevamiento fotogramétrico de un acopio de escombros orientado a determinar su volumen. Sobre el modelo digital de superficie se cubicó el material por diferencia respecto de una superficie de base triangulada desde el contorno del acopio: 935,76 m³ en 941,47 m². Productos: modelo 3D texturizado y ortofoto de 1 cm, georreferenciados con puntos de control.</p>
+<div class="tags"><span>escombros</span><span>Sony α6000</span><span>volumen</span></div>
+<div class="meta">
+<span>Loma Verde</span>
+<span>8 de oct de 2023</span>
+<span>46 fotos</span>
+<span>Rover 1</span>
+</div>
+</div>
+</a>
+<div class="card-actions">
+<a class="chip primary" href="casos/escombros-loma-verde/">Ver proyecto</a>
+<a class="chip" href="viewer.html?m=escombros-loma-verde">Ver en 3D</a>
+<a class="chip" href="mapa.html?m=escombros-loma-verde">Ortofoto y mediciones</a>
+<a class="chip" href="calidad.html?m=escombros-loma-verde">Resumen de calidad</a>
+<a class="chip" href="models/escombros-loma-verde/reporte-calidad.pdf" rel="noopener" target="_blank">Reporte PDF ↓</a>
+</div>
+</article></div>
+</div>
+</section>
+<section class="section sv-section" id="servicios">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Servicios</div>
+<h2>Para qué se usa</h2>
+</div>
+</div>
+<div class="sv-grid" id="sv-grid">
+<article class="sv-card"><span class="sv-n mono">01</span>
+<h3>Cómputo de volúmenes</h3><p>Acopios de áridos, escombros, tierra o cereal: cuántos m³ hay, cuántos camiones hacen falta para moverlos y cuánto se retiró entre una medición y otra.</p></article>
+<article class="sv-card"><span class="sv-n mono">02</span>
+<h3>Estado edilicio</h3><p>Registro con fecha del estado de un predio y sus construcciones: superficies, techos y cerramientos, para tasaciones, compraventas, seguros o antes de una obra.</p></article>
+<article class="sv-card"><span class="sv-n mono">03</span>
+<h3>Avance de obra</h3><p>Vuelos periódicos sobre la misma obra para comparar etapas, controlar certificaciones y tener un historial visual de lo hecho.</p></article>
+<article class="sv-card"><span class="sv-n mono">04</span>
+<h3>Ortofotos y planos base</h3><p>Fotos aéreas medibles y georreferenciadas que arquitectos, agrimensores e ingenieros pueden usar directamente como base de proyecto.</p></article>
+<article class="sv-card"><span class="sv-n mono">05</span>
+<h3>Puntos de control GNSS</h3><p>Medición en campo con receptores GNSS de precisión centimétrica, para que los modelos también tengan precisión centimétrica y queden georreferenciados en coordenadas reales.</p></article></div>
+</div>
+</section>
+<section class="section eq-section" id="equipos">
+<div class="wrap">
+<div class="section-head">
+<div>
+<div class="eyebrow">Equipos</div>
+<h2>Con qué trabajamos</h2>
+</div>
+</div>
+<div class="eq-grid" id="eq-grid">
+<article class="eq-card wide">
+<div class="eq-photos n1">
+<button class="eq-ph" data-alt="DJI Phantom 4 Pro con control remoto, baterías y jalón" data-src="assets/equipos/phantom4.jpg"><img alt="DJI Phantom 4 Pro con control remoto, baterías y jalón" loading="lazy" src="assets/equipos/phantom4.jpg"/></button>
+</div>
+<div class="eq-body">
+<div class="eyebrow">Drone</div>
+<h3>DJI Phantom 4 Pro</h3>
+<p>Drone comercial para misiones automáticas de fotogrametría. Con él se hizo el relevamiento del frigorífico sobre la Ruta Nacional 11.</p>
+<dl><dt>Cámara</dt><dd>FC6310 · sensor CMOS de 1", 20 MP</dd><dt>Resolución</dt><dd>4864 × 3648 px (4:3)</dd><dt>Obturador</dt><dd>Mecánico, sin distorsión por barrido</dd><dt>Uso</dt><dd>Ortofotos y modelos 3D texturizados</dd></dl>
+</div>
+</article>
+<article class="eq-card wide">
+<div class="eq-photos n2">
+<button class="eq-ph" data-alt="Rover 1 en vuelo" data-src="assets/equipos/cuadricoptero-vuelo.jpg"><img alt="Rover 1 en vuelo" loading="lazy" src="assets/equipos/cuadricoptero-vuelo.jpg"/></button><button class="eq-ph" data-alt="Rover 1 sobre su estuche con la cámara Sony A6000" data-src="assets/equipos/cuadricoptero-estuche.jpg"><img alt="Rover 1 sobre su estuche con la cámara Sony A6000" loading="lazy" src="assets/equipos/cuadricoptero-estuche.jpg"/></button>
+</div>
+<div class="eq-body">
+<div class="eyebrow">Drone de desarrollo propio</div>
+<h3>Rover 1 · Cuadricóptero de mapeo <span class="eq-badge">En desarrollo</span></h3>
+<p>Cuadricóptero de armado propio sobre chasis Tarot 650 de fibra de carbono, actualmente en desarrollo. Lleva GPS RTK a bordo para lograr precisión centimétrica en la posición de cada foto, sin depender tanto de puntos de control, y una cámara Sony A6000 de sensor APS-C. En las pruebas, con 3 kg al despegue, proyecta unos 35 minutos de autonomía.</p>
+<dl><dt>Chasis</dt><dd>Tarot 650 · fibra de carbono</dd><dt>Motores</dt><dd>Gartt 4108 · 620 kV</dd><dt>Variadores</dt><dd>Hobbywing XRotor Pro 40 A</dd><dt>Hélices</dt><dd>15 × 5,5" nylon con fibra de carbono</dd><dt>Controladora</dt><dd>CUAV V5 Nano · ArduPilot</dd><dt>Posicionamiento</dt><dd>GPS RTK a bordo (simpleRTK2B Lite)</dd><dt>Corrección</dt><dd>Base RTK propia</dd><dt>Radio y video</dt><dd>Skydroid H16</dd><dt>Batería</dt><dd>Li-ion 4S5P (celdas 18650) · ≈ 15.000 mAh</dd><dt>Peso al despegue</dt><dd>≈ 3 kg</dd><dt>Autonomía</dt><dd>≈ 35 min estimada (pruebas de 16–17 min)</dd><dt>Cámara</dt><dd>Sony A6000 · APS-C 24 MP</dd></dl>
+<a class="btn ghost eq-more" href="equipos/rover-1/">Ver desarrollo, pruebas y ficha técnica →</a>
+</div>
+</article>
+<article class="eq-card wide">
+<div class="eq-photos n1">
+<button class="eq-ph" data-alt="Receptor Emlid Reach RS2 sobre trípode en el predio del frigorífico" data-src="assets/equipos/gnss-campo.jpg"><img alt="Receptor Emlid Reach RS2 sobre trípode en el predio del frigorífico" loading="lazy" src="assets/equipos/gnss-campo.jpg"/></button>
+</div>
+<div class="eq-body">
+<div class="eyebrow">Topografía · GNSS</div>
+<h3>Emlid Reach RS2</h3>
+<p>Receptores GNSS multibanda que se usan como base y rover para medir los puntos de control terrestre y dar correcciones RTK.</p>
+<dl><dt>Constelaciones</dt><dd>GPS, GLONASS, Galileo, BeiDou, QZSS</dd><dt>Modos</dt><dd>RTK, PPK y estático</dd><dt>Precisión RTK</dt><dd>H 7 mm + 1 ppm · V 14 mm + 1 ppm</dd><dt>Precisión estática</dt><dd>H 4 mm + 0,5 ppm · V 8 mm + 1 ppm</dd></dl>
+</div>
+</article></div>
+</div>
+</section>
+<section class="section" id="acerca" style="padding-top:0">
+<div class="wrap" style="max-width:760px">
+<div class="eyebrow">Acerca</div>
+<h2 style="font-size:28px;letter-spacing:-.02em;margin:6px 0 12px">Cómo se hacen estos modelos</h2>
+<p style="color:var(--muted)">Cada modelo se reconstruye a partir de decenas o cientos de fotografías tomadas alrededor del objeto. El software de fotogrametría detecta puntos en común entre las fotos, calcula su posición en el espacio y genera una malla con textura real. Podés girarlos con el mouse o con el dedo, acercarte con la rueda o pellizcando, y en celulares compatibles verlos en realidad aumentada.</p>
+</div>
+</section>
+<section class="section ct-section" id="contacto">
+<div class="wrap">
+<div class="ct-box">
+<div>
+<div class="eyebrow">Contacto</div>
+<h2>¿Tenés un predio, una obra o un acopio para relevar?</h2>
+<p>Escribime por WhatsApp o por mail y vemos qué necesitás. <b id="ct-nombre">Guillermo Díaz</b></p>
+</div>
+<div class="ct-btns" id="ct-btns">
+<a class="btn wa" href="https://wa.me/5493416904961?text=Hola%20Guillermo%2C%20vi%20tus%20relevamientos%20en%20la%20web%20y%20quer%C3%ADa%20consultarte%20por%20un%20trabajo." rel="noopener" target="_blank"><svg aria-hidden="true" fill="currentColor" height="20" viewbox="0 0 24 24" width="20"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"></path></svg> WhatsApp 341 690-4961</a>
+<a class="btn ghost" href="mailto:guileman.diaz@gmail.com?subject=Consulta%20por%20relevamiento"><svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="m3 7 9 6 9-6"></path></svg> guileman.diaz@gmail.com</a></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<span>© <span id="year"></span> <span data-site="autor"></span></span>
+<span class="mono" id="footer-contact" style="font-size:12px"></span>
+</div>
+</footer>
+<script src="assets/app.js?v=22"></script>
+<script>initGallery();</script>
 </body>
 </html>
