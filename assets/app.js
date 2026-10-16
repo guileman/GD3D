@@ -129,6 +129,7 @@ async function initGallery() {
               ${m.ubicacion && m.ubicacion !== '—' ? `<span>${esc(m.ubicacion)}</span>` : ''}
               ${m.fecha ? `<span>${esc(fmtFecha(m.fecha))}</span>` : ''}
               ${m.fotos ? `<span>${esc(m.fotos)} fotos</span>` : ''}
+              ${m.equipo ? `<span>${esc(m.equipo.nombre.split(' (')[0])}</span>` : ''}
             </div>
           </div>
         </a>
@@ -176,6 +177,7 @@ async function initViewer() {
   const meta = [
     ['Fecha', fmtFecha(m.fecha)],
     ['Fotos', m.fotos],
+    ['Equipo', m.equipo?.nombre],
     ['Software', m.software],
     ['Etiquetas', (m.etiquetas || []).join(', ')],
   ].filter(([, v]) => v);
@@ -460,6 +462,12 @@ function setMeta(desc, url, img) {
 }
 
 
+function equipoLink(m) {
+  const q = m.equipo; if (!q) return '';
+  const href = q.id === 'rover-1' ? `equipo.html?e=${encodeURIComponent(q.id)}` : './#equipos';
+  return `<a href="${href}">${esc(q.nombre)}</a>`;
+}
+
 /* ---------------- Página de equipo ---------------- */
 async function initEquipo() {
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -546,6 +554,7 @@ async function initProyecto() {
         <div class="eyebrow">${esc(m.ubicacion || 'Proyecto')}${m.fecha ? ' · ' + esc(fmtFecha(m.fecha)) : ''}</div>
         <h1>${esc(m.titulo)}</h1>
         ${P.intro ? `<p class="pj-intro">${esc(P.intro)}</p>` : ''}
+        ${m.equipo ? `<p class="pj-equipo">Realizado con ${equipoLink(m)}</p>` : ''}
         <div class="hero-actions">
           ${m.archivo ? `<a class="btn" href="viewer.html?m=${enc}">Ver en 3D</a>` : ''}
           ${m.ortofoto ? `<a class="btn ghost" href="mapa.html?m=${enc}">Medir sobre la foto aérea</a>` : ''}

@@ -49,6 +49,10 @@
             "7,35 ha (0,0735 km²)"
           ],
           [
+            "Equipo",
+            "DJI Phantom 4 Pro"
+          ],
+          [
             "Cámara",
             "DJI FC6310 · 4864 × 3648 px"
           ],
@@ -193,7 +197,7 @@
         "pasos": [
           {
             "titulo": "Vuelo del drone",
-            "texto": "Unos 30 minutos de vuelo y 491 fotos para cubrir 7,35 ha, sin interrumpir la actividad del lugar."
+            "texto": "Unos 30 minutos de vuelo con el DJI Phantom 4 Pro y 491 fotos para cubrir 7,35 ha, sin interrumpir la actividad del lugar."
           },
           {
             "titulo": "Puntos medidos en el terreno",
@@ -210,6 +214,10 @@
         "baja": "models/frigorifico-rn11/modelo-baja.glb",
         "media": "models/frigorifico-rn11/modelo-media.glb",
         "alta": "models/frigorifico-rn11/modelo.glb"
+      },
+      "equipo": {
+        "id": "phantom-4-pro",
+        "nombre": "DJI Phantom 4 Pro"
       }
     },
     {
@@ -245,6 +253,10 @@
           [
             "Superficie",
             "0,44 ha (0,0044 km²)"
+          ],
+          [
+            "Equipo",
+            "Rover 1 · drone de desarrollo propio"
           ],
           [
             "Cámara",
@@ -400,7 +412,7 @@
         "pasos": [
           {
             "titulo": "Toma de fotos aéreas",
-            "texto": "Unos 2 minutos de captura y 46 fotos para cubrir 0,44 ha."
+            "texto": "Unos 2 minutos de captura con el Rover 1, el drone de desarrollo propio con cámara Sony A6000, y 46 fotos para cubrir 0,44 ha."
           },
           {
             "titulo": "Puntos medidos en el terreno",
@@ -457,6 +469,10 @@
         "baja": "models/escombros-loma-verde/modelo-baja.glb",
         "media": "models/escombros-loma-verde/modelo-media.glb",
         "alta": "models/escombros-loma-verde/modelo.glb"
+      },
+      "equipo": {
+        "id": "rover-1",
+        "nombre": "Rover 1 (drone de desarrollo propio)"
       }
     }
   ],
@@ -488,7 +504,8 @@
           "src": "assets/equipos/phantom4.jpg",
           "alt": "DJI Phantom 4 Pro con control remoto, baterías y jalón"
         }
-      ]
+      ],
+      "id": "phantom-4-pro"
     },
     {
       "nombre": "Rover 1 · Cuadricóptero de mapeo",
